@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domo.</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <!-- 사이드바 토글 -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
+        ☰
+    </button>
+
+    <!-- 메인 컨테이너 -->
+    <div class="main-container">
+        <!-- 포크 배경 -->
+        <div class="fork-background"></div>
+        
+        <!-- 메인 콘텐츠 -->
+        <div class="content">
+            <h1 class="logo">domo.</h1>
+            
+            <div class="button-container">
+                <button class="btn btn-primary" onclick="handleAboutClick()">
+                    About domo
+                </button>
+                <button class="btn btn-secondary" onclick="handleJoinClick()">
+                    Join 2025 domo.
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 사이드바 오버레이 -->
+    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+    <!-- 사이드바 -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="closeSidebar()" aria-label="메뉴 닫기">
+            ×
+        </button>
+        <div id="sidebar-content">
+            <!-- 사이드바 콘텐츠 -->
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div id="footer-container">
+        <!-- 푸터 콘텐츠 -->
+    </div>
+
+    <!-- 공통 JS -->
+    <script src="/js/common.js"></script>
+    <script>
+        // 페이지 전용 자바스크립트
+        function handleAboutClick() {
+            console.log('About domo clicked');
+            // TODO: About 페이지 이동
+        }
+
+        function handleJoinClick() {
+            console.log('Join 2025 domo clicked');
+            // TODO: Join 페이지 이동
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // 사이드바 열릴 때 body 스크롤 방지
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // DOM 로드 후 페이지 컴포넌트 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 사이드바 로드
+            if (typeof loadSidebar === 'function') {
+                loadSidebar('default-sidebar');
+            }
+            
+            // 푸터 로드
+            if (typeof loadFooter === 'function') {
+                loadFooter('main-footer');
+            }
+
+            // ESC 키로 사이드바 닫기
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
