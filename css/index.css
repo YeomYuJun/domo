@@ -6,24 +6,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1.5rem;
     background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
 }
 
 /* 포크 배경 */
 .fork-background {
     position: absolute;
-    right: -10%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 300px;
-    height: 400px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('/image/main-fork.svg');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.6;
+    opacity: 0.9;
     z-index: 1;
+    background-position-x: -75px;
 }
 
 /* 메인 콘텐츠 */
@@ -35,6 +34,7 @@
     align-items: flex-start;
     width: 100%;
     max-width: 320px;
+    height: 100%;
 }
 
 /* 로고 */
@@ -44,6 +44,8 @@
     letter-spacing: -0.02em;
     margin-bottom: 4rem;
     color: #ffffff;
+    margin-top: 250px;
+    font-weight: 600;
 }
 
 /* 버튼 컨테이너 */
@@ -52,11 +54,16 @@
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    margin-top: 150px;
+}
+
+.button-container .btn {
+    width: 70%;
 }
 
 /* 기본 버튼 스타일 */
 .btn {
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 500;
@@ -184,12 +191,6 @@
         font-size: 3.5rem;
         margin-bottom: 3rem;
     }
-    
-    .fork-background {
-        width: 250px;
-        height: 350px;
-        right: -15%;
-    }
 
     .content {
         max-width: 280px;
@@ -213,16 +214,23 @@
     body {
         background: #000;
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: center;
         min-height: 100vh;
         padding-top: 2rem;
     }
     
     .main-container {
         max-width: 400px;
-        min-height: calc(100vh - 4rem);
+        min-height: calc(100vh - 160px); /* footer 공간 확보 */
         border-radius: 12px;
         overflow: hidden;
+        margin-bottom: 0;
+    }
+    
+    #footer-container {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 0;
     }
 }
