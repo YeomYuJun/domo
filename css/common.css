@@ -27,6 +27,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-y: clip;
 }
 
 /* 폼 요소 리셋 */
@@ -213,6 +214,12 @@ p {
 }
 
 /* 푸터 공통 스타일 */
+
+/* 푸터 */
+#footer-container {
+    height: 50px;
+}
+
 .footer {
     width: 100%;
     background: #111111;
@@ -231,9 +238,10 @@ p {
 
 .footer-text {
     font-size: 1.2rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
     margin-right: 3rem;
+    
 }
 
 @keyframes slide {

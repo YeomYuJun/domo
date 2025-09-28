@@ -97,16 +97,16 @@ const FOOTER_TEMPLATES = {
     'main-footer': `
         <footer class="footer">
             <div class="footer-slider">
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
-                <span class="footer-text">domo</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
+                <span class="footer-text">domo.</span>
             </div>
         </footer>
     `,

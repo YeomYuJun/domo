@@ -1,12 +1,15 @@
 /* 페이지 전용 스타일 */
 .main-container {
-    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    padding: 1.5rem 1rem;
+    min-height: calc(100vh - 60px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /*background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);*/
 }
 
 /* 포크 배경 */
@@ -33,7 +36,6 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    max-width: 320px;
     height: 100%;
 }
 
@@ -46,6 +48,7 @@
     color: #ffffff;
     margin-top: 250px;
     font-weight: 600;
+    padding-left: 3rem;
 }
 
 /* 버튼 컨테이너 */
@@ -58,7 +61,7 @@
 }
 
 .button-container .btn {
-    width: 70%;
+    width: 55%;
 }
 
 /* 기본 버튼 스타일 */
@@ -185,15 +188,13 @@
 @media (max-width: 768px) {
     .main-container {
         padding: 1.5rem 1rem;
+        height: calc(100vh - 50px);
     }
     
     .logo {
         font-size: 3.5rem;
         margin-bottom: 3rem;
-    }
-
-    .content {
-        max-width: 280px;
+        padding-left: 2rem;
     }
 
     .sidebar {
@@ -211,26 +212,46 @@
 
 /* 데스크톱 조정 */
 @media (min-width: 769px) {
+    .main-container {
+        width: 100vw;
+        height: calc(100vh - 60px);
+        max-width: 1200px;
+        min-height: calc(100vh - 60px);
+        border-radius: 0;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .fork-background {
+        left : 25%;
+        width: 50%;
+    }
+
     body {
         background: #000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        margin: 0;
+        padding: 0;
         min-height: 100vh;
-        padding-top: 2rem;
     }
-    
-    .main-container {
-        max-width: 400px;
-        min-height: calc(100vh - 160px); /* footer 공간 확보 */
-        border-radius: 12px;
-        overflow: hidden;
-        margin-bottom: 0;
+
+    .content {
+        max-width: 320px;
+        margin: 0 auto;
+        position: relative;
+        transform: translateX(-50%);
     }
-    
-    #footer-container {
-        width: 100%;
-        max-width: 400px;
-        margin-top: 0;
+
+    .logo {
+        margin-top: 250px;
+        font-size: 4rem;
+        font-weight: 600;
+    }
+
+    .button-container {
+        margin-top: 150px;
+    }
+
+    .button-container .btn {
+        width: 70%;
     }
 }
