@@ -17,7 +17,10 @@
 
 @font-face {
     font-family: 'Pretendard';
-    src: url(/fonts/Pretendard-Black.woff2);
+    src: url(/fonts/PretendardVariable.woff2);
+}
+.pretendard {
+    font-family: 'Pretendard'!important;
 }
 
 /* 기본 설정 */
