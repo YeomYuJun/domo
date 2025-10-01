@@ -10,6 +10,16 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Mont';
+    src: url(/fonts/Mont-HeavyDEMO.otf);
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url(/fonts/Pretendard-Black.woff2);
+}
+
 /* 기본 설정 */
 html {
     font-size: 16px;
@@ -22,7 +32,7 @@ body {
     font-family: 'Mont', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     line-height: 1.6;
     color: #ffffff;
-    background-color: #000000;
+    background-color: #020202;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
