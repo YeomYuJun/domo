@@ -1,0 +1,9 @@
+body {
+    color: #ffffff;
+    margin: 0;
+    height: 100vh; /* 전체 화면 높이 */
+    /*background: linear-gradient(to bottom, black, red, white);*/
+    background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
+}
+
+.domo
