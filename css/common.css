@@ -40,7 +40,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-y: clip;
+    /*overflow-y: clip;*/
 }
 
 /* 폼 요소 리셋 */
@@ -267,8 +267,8 @@ p {
 
 .sidebar-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 2rem;
+    right: 2rem;
     background: none;
     border: none;
     color: #fff;

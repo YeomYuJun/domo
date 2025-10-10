@@ -34,6 +34,7 @@ const SIDEBAR_TEMPLATES = {
             .sidebar-nav {
                 height: 100%;
                 padding-top: 2rem;
+                padding-right: 1rem;
                 display: flex;
                 flex-direction: column;
             }

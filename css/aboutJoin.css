@@ -1,0 +1,51 @@
+body {
+    color: #ffffff;
+    margin: 0;
+    height: 100vh; /* 전체 화면 높이 */
+    /*background: linear-gradient(to bottom, black, red, white);*/
+    background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
+}
+
+
+.main-container {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    min-height: calc(100vh - 60px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /*background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);*/
+}
+
+.aboutDomoTxt {
+    font-size: 26px;
+    margin-left: 38px;
+    margin-top: 70px;
+
+}
+
+.domo-info {
+    padding: 1rem;
+}
+
+.domo-info .info-sec .sec-t {
+    font-size: 18px;
+}
+.domo-info .info-sec .sec-c  {
+    font-size: 15px;
+}
+
+.domo-info .info-sec {
+    margin-bottom: 2rem;
+}
+
+.domo-info .join-btn {
+    width: 100%;
+    background-color: #ffffff;
+    color: black;
+    font-size: 20px;
+    padding: 15px 0;
+    font-weight: 600;
+}
