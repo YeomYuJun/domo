@@ -226,6 +226,93 @@ p {
     outline-offset: 2px;
 }
 
+
+/* 사이드바 공통 스타일 */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    transition: right 0.3s ease;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 사이드바 토글 버튼 */
+.sidebar-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    /*
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    */
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 997;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 32px;
+}
+/* 다른 버튼 일괄 적용 제거 */
+.sidebar-toggle:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
 /* 푸터 공통 스타일 */
 
 /* 푸터 */
@@ -235,8 +322,10 @@ p {
 
 .footer {
     width: 100%;
+    /*
     background: #111111;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    */
     overflow: hidden;
     position: relative;
 }
