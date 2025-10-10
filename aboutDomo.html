@@ -10,7 +10,88 @@
 <body>
     <div class="aboutDomoTxt">
         <div class="aboutTxt">About</div>
-        <div class="domoTxt">domo.</div>
+        <!-- <div class="domoTxt">domo.</div> -->
+        <div id='master-container-scroller'>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>domo.</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#' id="jp1">どうも</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>domo.</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#' id="jp2">どうも</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>domo.</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <!-- <div class='master-container-scroller_item'>Friend.</div> -->
+              </div>
     </div>
+    <div class="domoInfoTxt">
+        Private Dining Party 인 domo는</br>
+        서로의 주변 지인들을 초대하여 한 해를 마무리 하는</br>
+        연말 요리 파티 입니다.</br>
+        </br>
+        domo 에서는 3가지 역할을 선택할 수 있습니다.
+    </div>
+
+
+    <div class="btnGr">
+        <div class="btnRec1">
+            <div class="btnTxt">dish.</div>
+            <div class="btn">click.</div>
+        </div>
+        <div class="btnRec2">
+            <div class="btnTxt">drink.</div>
+            <div class="btn">click.</div>
+        </div>
+        <div class="btnRec3">
+            <div class="btnTxt">present.</div>
+            <div class="btn">click.</div>
+        </div>
+    </div>
+
+    <div class="descTxt"></div>
+    <div class="joinBtn" id="joinBtn">
+      domo 2025
+    </div>
+<script>
+      document.getElementById('joinBtn').addEventListener('click', () => {
+              fetch('/php/getCountQuery.php')
+              .then(res => res.text())   // 일단 text로 받아서 확인
+              .then(text => console.log('받은 내용:', text))
+              .catch(err => console.error('에러 발생:', err));
+          });
+
+
+
+
+      
+
+
+    //   document.getElementById('joinBtn').addEventListener('click', () => {
+    //   fetch('/php/getCountQuery.php')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       console.log('d count:', data.count);
+    //     })
+    //     .catch(err => console.error('에러 발생:', err));
+    // });
+</script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+.domo2024Txt{
+    padding-top: 98px;
+    padding-left: 30px;
+    font-size: 22px;
+}
+
+.infoGr{
+    padding-left: 25px;
+    padding-top: 19px;
+    height: 125px;
+    display: flex;
+}
+
+.cntGr{
+   display: flex;
+   padding-top: 23px;
+
+}
+
+.yearTxt{
+    margin-top: -9px;
+    font-size: 14px;
+}
+
+
+.underscoreTxt{
+    font-family: 'Pretendard';
+    font-weight: 1000;
+}
+
+.prImg{
+    width: 97px;
+    height: 100px;
+    background-image: url('/image/grProfile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* 가운데 정렬 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.prGr{
+    padding-left: 24px;
+    
+}
+
+.textGr{
+    font-size: 14px;
+}
+
+.cnt{
+        /* 가운데 정렬 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.desc{
+        /* 가운데 정렬 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding-top: 7px;
+}
+
+.line{
+    padding-left: 34px;
+}
+
+.firstLine{
+    padding-left: 0px;
+}
+
+.picGr{
+    padding-left: 32px;
+    padding-top: 19px;
+}
+
+.bigPicGr{
+  display: flex;
+}
+
+.pic1{
+    background-image: url('/image/grProfile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
