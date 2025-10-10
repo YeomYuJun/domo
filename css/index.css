@@ -30,13 +30,13 @@
 }
 
 .slide-in-right {
-	-webkit-animation: slide-in-right 2.5s linear both;
-    animation: slide-in-right 2.5s linear both;
+	-webkit-animation: slide-in-right 3.5s linear both;
+    animation: slide-in-right 3.5s linear both;
 }
 
 .slide-in-left {
-	-webkit-animation: slide-in-left 2.5s linear both;
-    animation: slide-in-left 2.5s linear both;
+	-webkit-animation: slide-in-left 3.5s linear both;
+    animation: slide-in-left 3.5s linear both;
 }
 
 /*포크 애니메이션*/

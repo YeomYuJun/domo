@@ -4,36 +4,71 @@
 const SIDEBAR_TEMPLATES = {
     'default-sidebar': `
         <nav class="sidebar-nav">
-            <h3 style="color: #fff; margin-bottom: 2rem; font-size: 1.5rem;">Menu</h3>
-            <ul class="sidebar-menu">
-                <li><a href="/" class="sidebar-link">Home</a></li>
-                <li><a href="/about" class="sidebar-link">About</a></li>
-                <li><a href="/services" class="sidebar-link">Services</a></li>
-                <li><a href="/contact" class="sidebar-link">Contact</a></li>
-            </ul>
+            <div class="h50 sidebar-top">
+                <h3 style="text-align:right; color: #fff; margin-bottom: 1rem; font-size: 1.5rem;">domo.</h3>
+                <h4 style="text-align:right;">圖謀</h4>
+                <h4 style="text-align:right;">どうも</h4>
+                <h4 class="pretendard" style="text-align:right;">도모</h4>
+            </div>
+            <div class="h50 sidebar-bottom">
+                <ul class="sidebar-menu">
+                    <li><a href="/" class="sidebar-link">home.</a></li>
+                    <li><a href="/" class="gray-color sidebar-link">domo 2019.</a></li>
+                    <li><a href="/" class="gray-color sidebar-link">domo 2020.</a></li>
+                    <li><a href="/" class="gray-color sidebar-link">domo 2021.</a></li>
+                    <li><a href="/" class="sidebar-link">domo 2024.</a></li>
+                    <li><a href="/" class="sidebar-link">domo 2025.</a></li>
+                </ul>
+                <p style="text-align: right; font-size: 11px;">
+                    Copyright 2025.<br>
+                    Jonghyeok Yoon,<br>
+                    Junggi Song,<br>
+                    Jujun Yeom<br>
+                </p>
+            </div>
         </nav>
         <style>
+            #sidebar-content {
+                height: 100%;
+            }
             .sidebar-nav {
+                height: 100%;
                 padding-top: 2rem;
+                display: flex;
+                flex-direction: column;
+            }
+            .h50 {
+                height: 50%;
+            }
+            .sidebar-top h4 {
+                font-weight: 300;
+                font-size : 14px;
+            }
+            .sidebar-bottom {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
             }
             .sidebar-menu {
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
+                align-items: flex-end;
             }
             .sidebar-link {
                 display: block;
-                padding: 1rem 0;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(255, 255, 255, 1);
                 text-decoration: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                transition: all 0.3s ease;
+                transition: all 0.4s ease;
                 font-size: 1.1rem;
             }
             .sidebar-link:hover {
                 color: #ffffff;
-                padding-left: 1rem;
-                background: rgba(255, 255, 255, 0.05);
+                padding-right: 0.5rem;
+                /*background: rgba(255, 255, 255, 0.05);*/
+            }
+            .sidebar-link.gray-color {
+                color: rgba(120, 120, 120, 1);
             }
         </style>
     `,
