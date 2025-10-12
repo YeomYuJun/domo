@@ -6,6 +6,7 @@
     <title>domo.</title>
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/aboutJoin.css">
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=stluekds1u&callback=initMap"></script>
 </head>
 <body>
     <!-- 사이드바 토글 -->
@@ -22,10 +23,11 @@
         <div class="domo-info">
             <div class="info-sec">
                 <p class="sec-t">party place</p>
-                <p class="sec-c pretendard">예를들어 마곡 어쩌고 어쩌고 저쩌</p>
-                <div style="height: 160px; width: 100%; background-color: blanchedalmond;">
+                <p class="sec-c pretendard">서울 마포구 창전로 50-1 (지하1층 스튜디오하루)</p>
+                <div id="map" style="width:100%;height:200px;"></div>
+                <!-- <div style="height: 160px; width: 100%; background-color: blanchedalmond;">
                     지도
-                </div>
+                </div> -->
             </div>
             <div class="info-sec">
                 <p class="sec-t">party time</p>
@@ -127,6 +129,44 @@
 
         function toJoin(){
             window.location.href = '/join.html';
+        }
+
+
+        //지도 생성
+        function initMap() {
+            // 경도(Longitude): 126.9326570
+            // 위도(Latitude): 37.5468646
+            var lat = 37.5468646;
+            var lng = 126.9326570;
+
+            // 지도 생성
+            var map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(lat, lng),
+                zoom: 16,
+                gl: true,
+                customStyleId : 'ba07d252-1ece-4b6f-8e5f-b97cce8c2376',
+            });
+
+            // 마커 추가
+            var marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(lat, lng),
+                map: map,
+                title: '서울 마포구 창전로 50-1 (지하1층 스튜디오하루)'
+            });
+
+            // 정보창 추가
+            var infoWindow = new naver.maps.InfoWindow({
+                content: '<div style="padding:10px;font-size:12px; color: black;">서울 마포구 창전로 50-1 <br>(지하1층 스튜디오하루)</div>'
+            });
+
+            // 마커 클릭시 정보창 표시
+            naver.maps.Event.addListener(marker, 'click', function() {
+                if (infoWindow.getMap()) {
+                    infoWindow.close();
+                } else {
+                    infoWindow.open(map, marker);
+                }
+            });
         }
     </script>
 </body>
