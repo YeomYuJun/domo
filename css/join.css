@@ -1,0 +1,120 @@
+body {
+    color: #ffffff;
+    margin: 0;
+    height: 100vh; /* 전체 화면 높이 */
+    /*background: linear-gradient(to bottom, black, red, white);*/
+    background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
+}
+
+
+.main-container {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    min-height: calc(100vh - 60px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /*background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);*/
+}
+
+.aboutDomoTxt {
+    font-size: 26px;
+    margin-left: 38px;
+    margin-top: 70px;
+
+}
+
+.domo-form {
+    padding: 1rem;
+    margin-top: 2rem;
+}
+.domo-form .input-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 2rem;
+}
+
+.domo-form .input-sec input[type=text] {
+    border-bottom: 1px solid white;
+    padding: 0.5rem 0;
+    font-size: 16px;
+    font-weight: 300;
+
+}
+.domo-form .input-sec input[type=text]:focus {
+    outline: none;
+}
+
+.domo-form .input-sec span.info{
+    font-size: 12px;
+    font-weight: 100;
+    color : #cecece
+}
+
+.domo-form .input-sec .radio-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.domo-form .input-sec .radio-wrap .radio-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item input {
+    display: none;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item label {
+    text-align: center;
+    aspect-ratio: 1 / 1;
+    background-color: #666666;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    cursor: pointer;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item label:hover {
+    background-color: #444444;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item input:checked + label {
+    background-color: #333333;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item input:checked + label:hover {
+    background-color: #444444;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item input:disabled + label {
+    background-color: #2a2a2a;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.domo-form .input-sec .radio-wrap .radio-item input:disabled + label:hover {
+    background-color: #2a2a2a;
+}
+
+
+.domo-form .warn-msg {
+    font-size: 12px;
+    font-weight: 100;
+    text-align: center;
+}
+.domo-form .join-btn {
+    width: 100%;
+    background-color: #ffffff;
+    color: black;
+    font-size: 20px;
+    padding: 15px 0;
+    font-weight: 600;
+}

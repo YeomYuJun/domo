@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domo.</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/join.css">
+</head>
+<body>
+    <!-- 사이드바 토글 -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
+        =
+    </button>
+    
+    <!-- End 콘텐츠 영역-->
+    <div class="main-container">
+        <div class="aboutDomoTxt">
+            <div class="aboutTxt">Join</div>
+            <div class="domoTxt">domo 2025.</div>
+        </div>
+        <div class="domo-form">
+                <form>
+                <div class="input-sec">
+                    <p class="sec-t">Name</p>
+                    <input id="name" class="name pretendard" name="name" type="text" placeholder="이름을 입력해주세요" autocomplete="off"/>
+                    <span class="info pretendard">정자로 기입 바랍니다.</span>
+                </div>
+
+                <div class="input-sec">
+                    <p class="sec-t">Phone</p>
+                    <input id="phone" class="phone pretendard" name="phone" type="text" placeholder="전화번호를 입력해주세요" autocomplete="off"/>
+                    <span class="info pretendard">010-0000-000</span>
+                </div>
+
+                <div class="input-sec">
+                    <p class="sec-t">Role</p>
+                    <div class="radio-wrap">
+                        <div class="radio-item">
+                            <input id="role-dish" type="radio" name="role" value="dish" disabled>
+                            <label for="role-dish">dish</label>
+                        </div>
+
+                        <div class="radio-item">
+                            <input id="role-drink" type="radio" name="role" value="drink">
+                            <label for="role-drink">drink</label>
+                        </div>
+
+                        <div class="radio-item">
+                            <input id="role-present" type="radio" name="role" value="present">
+                            <label for="role-present">present</label>
+                        </div>
+                    </div>
+                    <span class="info pretendard"></span>
+                </div>
+
+                <p class="warn-msg pretendard">개인정보는 파티 관련 안내문 전송에만 사용됩니다.</p>
+                <button id="joinBtn" class="join-btn pretendard">신청하기</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- 콘텐츠 영역-->
+
+    <!-- 사이드바 오버레이 -->
+    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+    <!-- 사이드바 -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="closeSidebar()" aria-label="메뉴 닫기">
+            ×
+        </button>
+        <div id="sidebar-content">
+            <!-- 사이드바 콘텐츠 -->
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div id="footer-container">
+        <!-- 푸터 콘텐츠 -->
+    </div>
+
+    <!-- 공통 JS -->
+    <script src="/js/common.js"></script>
+    <script>
+        // 페이지 전용 자바스크립트
+        function handleAboutClick() {
+            console.log('About domo clicked');
+            window.location.href = "aboutDomo.html";
+        }
+
+        function handleJoinClick() {
+            console.log('Join 2025 domo clicked');
+            // TODO: Join 페이지 이동
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // 사이드바 열릴 때 body 스크롤 방지
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // DOM 로드 후 페이지 컴포넌트 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 사이드바 로드
+            if (typeof loadSidebar === 'function') {
+                loadSidebar('default-sidebar');
+            }
+            
+            // 푸터 로드
+            if (typeof loadFooter === 'function') {
+                loadFooter('main-footer');
+            }
+
+            // ESC 키로 사이드바 닫기
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+        });
+
+
+        // 한글 전용 이름 입력 처리 (6자리 제한)
+        document.getElementById('name').addEventListener('input', function(e) {
+            let value = e.target.value;
+            // 한글(완성형 + 초성, 중성, 종성)만 남기고 다른 문자 제거
+            value = value.replace(/[^가-힣ㄱ-ㅎㅏ-ㅣ]/g, '');
+            // 6자리 제한 (완성된 한글 기준)
+            if (value.length > 6) {
+                value = value.slice(0, 6);
+            }
+            e.target.value = value;
+        });
+
+        // 한글 입력 완료 시 검증 (blur 이벤트)
+        document.getElementById('name').addEventListener('blur', function(e) {
+            let value = e.target.value;
+            // 완성된 한글만 남기기 (초성, 중성, 종성 제거)
+            value = value.replace(/[^가-힣]/g, '');
+            e.target.value = value;
+        });
+
+        // 전화번호 포맷팅 (000-0000-0000)
+        let phoneInput = document.getElementById('phone');
+        let lastPhoneValue = '';
+
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value;
+            let cursorPosition = e.target.selectionStart;
+
+            // 현재 값이 이전 값보다 짧으면 삭제 중
+            let isDeleting = value.length < lastPhoneValue.length;
+
+            // 숫자만 남기기
+            let numbersOnly = value.replace(/[^0-9]/g, '');
+
+            // 11자리 제한
+            if (numbersOnly.length > 11) {
+                numbersOnly = numbersOnly.slice(0, 11);
+            }
+
+            // 포맷팅
+            let formatted = '';
+            if (numbersOnly.length >= 7) {
+                formatted = numbersOnly.slice(0, 3) + '-' + numbersOnly.slice(3, 7) + '-' + numbersOnly.slice(7);
+            } else if (numbersOnly.length >= 3) {
+                formatted = numbersOnly.slice(0, 3) + '-' + numbersOnly.slice(3);
+            } else {
+                formatted = numbersOnly;
+            }
+
+            e.target.value = formatted;
+            lastPhoneValue = formatted;
+
+            // 백스페이스로 하이픈을 지울 때 커서 위치 조정
+            if (isDeleting && (value.charAt(cursorPosition) === '-' || value.charAt(cursorPosition - 1) === '-')) {
+                setTimeout(() => {
+                    let newPosition = cursorPosition;
+                    if (formatted.charAt(cursorPosition - 1) === '-') {
+                        newPosition = cursorPosition - 1;
+                    }
+                    e.target.setSelectionRange(newPosition, newPosition);
+                }, 0);
+            }
+        });
+
+        // 키 다운 이벤트로 백스페이스 처리 개선
+        phoneInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace') {
+                let cursorPosition = e.target.selectionStart;
+                let value = e.target.value;
+
+                // 커서가 하이픈 위치에 있으면 하이픈 앞의 숫자까지 삭제
+                if (value.charAt(cursorPosition - 1) === '-') {
+                    e.preventDefault();
+                    let newValue = value.slice(0, cursorPosition - 2) + value.slice(cursorPosition);
+                    let numbersOnly = newValue.replace(/[^0-9]/g, '');
+
+                    // 재포맷팅
+                    let formatted = '';
+                    if (numbersOnly.length >= 7) {
+                        formatted = numbersOnly.slice(0, 3) + '-' + numbersOnly.slice(3, 7) + '-' + numbersOnly.slice(7);
+                    } else if (numbersOnly.length >= 3) {
+                        formatted = numbersOnly.slice(0, 3) + '-' + numbersOnly.slice(3);
+                    } else {
+                        formatted = numbersOnly;
+                    }
+
+                    e.target.value = formatted;
+                    lastPhoneValue = formatted;
+
+                    // 커서 위치 설정
+                    let newCursorPos = cursorPosition - 2;
+                    if (newCursorPos < 0) newCursorPos = 0;
+                    e.target.setSelectionRange(newCursorPos, newCursorPos);
+                }
+            }
+        });
+
+        // 신청하기 버튼 클릭 처리
+        document.getElementById('joinBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            validateAndSubmit();
+        });
+
+        function validateAndSubmit() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const role = document.querySelector('input[name="role"]:checked');
+
+            // 1. 이름 검증 (한글 2-6자)
+            if (!name || name.length < 2 || name.length > 6) {
+                alert('이름은 한글 2-6자로 입력해주세요.');
+                return;
+            }
+
+            // 2. 전화번호 검증 (000-0000-0000 형식)
+            const phonePattern = /^010-\d{4}-\d{4}$/;
+            if (!phone || !phonePattern.test(phone)) {
+                alert('전화번호를 올바른 형식으로 입력해주세요. (010-0000-0000)');
+                return;
+            }
+
+            // 3. 역할 선택 검증
+            if (!role) {
+                alert('역할을 선택해주세요.');
+                return;
+            }
+
+            // 모든 검증 통과
+            alert('신청이 완료되었습니다!');
+            // TODO: 실제 제출 로직 구현
+            const formData = {
+                name, phone, role: role.value 
+            }
+
+            console.log('Form data:', formData);
+        }
+    </script>
+</body>
+</html>
