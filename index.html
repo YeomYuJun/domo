@@ -7,22 +7,25 @@
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
-<body>
+<body class="hide">
     <!-- 사이드바 토글 -->
     <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
         =
     </button>
     <div id="intro" class="intro tracking-in-expand">domo.</div>
     <!-- 메인 컨테이너 -->
-    <div class="main-container">
+    <div class="main-container hide">
         <!-- 포크 배경 -->
-        <div class="fork-background slide-in-right"></div>
+        <!-- <div class="fork-background slide-in-right"></div> -->
+        <div class="fork-background"></div>
         
         <!-- 메인 콘텐츠 -->
         <div class="content">
-            <h1 class="logo slide-in-left">domo.</h1>
+            <!-- <h1 class="logo slide-in-left">domo.</h1> -->
+            <h1 class="logo">domo.</h1>
             
-            <div class="button-container slide-in-left">
+            <!-- <div class="button-container slide-in-left"> -->
+            <div class="button-container">
                 <button class="btn btn-primary" onclick="handleAboutClick()">
                     About domo
                 </button>
@@ -111,8 +114,8 @@
         const intro = document.getElementById('intro');
         
         setTimeout(() => {
+            document.body.classList.remove('hide');
             intro.classList.remove('tracking-in-expand');
-            
             
             setTimeout(() => {
                 intro.classList.add('tracking-in-expand-reverse');
@@ -120,7 +123,7 @@
                     intro.style.display = 'none';
                 }, 700);
             }, 700);
-        }, 700);
+        }, 100);
         });
     </script>
 </body>

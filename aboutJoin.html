@@ -156,9 +156,13 @@
 
             // 정보창 추가
             var infoWindow = new naver.maps.InfoWindow({
-                content: '<div style="padding:10px;font-size:12px; color: black;">서울 마포구 창전로 50-1 <br>(지하1층 스튜디오하루)</div>'
+                content: '<div style="padding:10px;font-size:12px; color: black;">서울 마포구 창전로 50-1 <br>(지하1층 스튜디오하루)<br>'
+                            + '<a style="color: blue;" target="_blank" href="https://map.naver.com/p/entry/place/1826130562?c=17.50,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202510132148&locale=ko&svcName=map_pcv5">링크'
+                            + '</a>'
+                        +'</div>'
             });
 
+            //
             // 마커 클릭시 정보창 표시
             naver.maps.Event.addListener(marker, 'click', function() {
                 if (infoWindow.getMap()) {
