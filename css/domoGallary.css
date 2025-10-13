@@ -1,14 +1,23 @@
+body{
+    color: #ffffff;
+    margin: 0;
+    height: 100vh; /* 전체 화면 높이 */
+    /*background: linear-gradient(to bottom, black, red, white);*/
+    background: linear-gradient(to bottom, #000000 0%, #000000 78%, #000000 89%, #2d2d2d 100%);
+    background-attachment: fixed; /* 배경 고정 */
+}
+
 .domo2024Txt{
-    padding-top: 98px;
+    padding-top: 25px;
     padding-left: 30px;
     font-size: 22px;
 }
 
 .infoGr{
-    padding-left: 25px;
-    padding-top: 19px;
-    height: 125px;
-    display: flex;
+      padding-left: 25px;
+      padding-top: 23px;
+      height: 125px;
+      display: flex;
 }
 
 .cntGr{
@@ -82,16 +91,102 @@
 
 .picGr{
     padding-left: 32px;
-    padding-top: 19px;
+    padding-top: 44px;
+    padding-right: 30px;
+    height: 616px;
 }
 
 .bigPicGr{
   display: flex;
+  height: 68%;
+    width: 100%;
 }
 
 .pic1{
-    background-image: url('/image/grProfile.png');
+    background-image: url('/image/menu2024.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    width: 63%;
+    height: 91%;
+}
+
+.pic2{
+    background-image: url('/image/2024_1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 117px;
+    height: 117px;
+    /* padding-left: 28px; */
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+
+.pic3{
+    background-image: url('/image/2024_2.5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 117px;
+    height: 117px;
+    /* padding-left: 28px; */
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+
+.pic4{
+    background-image: url('/image/2024_3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 117px;
+    height: 112px;
+    /* padding-left: 28px; */
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+
+
+.smallPicGr{
+    display: flex;
+}
+
+.pic5{
+    background-image: url(/image/2024_4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 108px;
+    height: 107px;
+    /* padding-left: 28px; */
+    /* margin-left: 4px; */
+    margin-bottom: 4px;
+    margin-top: -30px;
+}
+
+.pic6{
+    background-image: url(/image/2024_5.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 108px;
+    height: 107px;
+    /* padding-left: 28px; */
+    margin-left: 4px;
+    margin-bottom: 4px;
+    margin-top: -30px;
+}
+
+.pic7{
+    background-image: url(/image/2024_6.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 108px;
+    height: 107px;
+    /* padding-left: 28px; */
+    margin-left: 4px;
+    margin-bottom: 4px;
+    margin-top: -30px;
 }

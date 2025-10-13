@@ -10,7 +10,7 @@ body {
 .aboutDomoTxt{
     font-size: 26px;
     margin-left: 38px;
-    margin-top: 144px;
+    margin-top: 50px;
 }
 
 .domoTxt{
@@ -679,155 +679,76 @@ body {
           transform: translateY(0px)
       }
       11.11111111111111% {
-          -webkit-transform: translateY(-36px);
-          transform: translateY(-36px)
+          -webkit-transform: translateY(-42px);
+          transform: translateY(-42px)
       }
       14.814814814814815% {
-          -webkit-transform: translateY(-36px);
-          transform: translateY(-36px)
+          -webkit-transform: translateY(-42px);
+          transform: translateY(-42px)
       }
       22.22222222222222% {
-          -webkit-transform: translateY(-74px);
-          transform: translateY(-74px)
+          -webkit-transform: translateY(-83px);
+          transform: translateY(-83px)
       }
       25.925925925925927% {
-          -webkit-transform: translateY(-74px);
-          transform: translateY(-74px)
+          -webkit-transform: translateY(-83px);
+          transform: translateY(-83px)
       }
       33.333333333333336% {
-          -webkit-transform: translateY(-198px);
-          transform: translateY(-198px)
+          -webkit-transform: translateY(-115px);
+          transform: translateY(-115px)
       }
       37.03703703703704% {
-          -webkit-transform: translateY(-198px);
-          transform: translateY(-198px)
+          -webkit-transform: translateY(-115px);
+          transform: translateY(-115px)
       }
       44.44444444444444% {
-          -webkit-transform: translateY(-264px);
-          transform: translateY(-264px)
+          -webkit-transform: translateY(-156px);
+          transform: translateY(-156px)
       }
       48.148148148148145% {
-          -webkit-transform: translateY(-264px);
-          transform: translateY(-264px)
+          -webkit-transform: translateY(-156px);
+          transform: translateY(-156px)
       }
       55.55555555555556% {
-          -webkit-transform: translateY(-330px);
-          transform: translateY(-330px)
+          -webkit-transform: translateY(-199px);
+          transform: translateY(-199px)
       }
       59.25925925925926% {
-          -webkit-transform: translateY(-330px);
-          transform: translateY(-330px)
+          -webkit-transform: translateY(-199px);
+          transform: translateY(-199px)
       }
       66.66666666666667% {
-          -webkit-transform: translateY(-396px);
-          transform: translateY(-396px)
+          -webkit-transform: translateY(-238px);
+          transform: translateY(-238px)
       }
       70.37037037037037% {
-          -webkit-transform: translateY(-396px);
-          transform: translateY(-396px)
+          -webkit-transform: translateY(-238px);
+          transform: translateY(-238px)
       }
       77.77777777777777% {
-          -webkit-transform: translateY(-462px);
-          transform: translateY(-462px)
+          -webkit-transform: translateY(-277px);
+          transform: translateY(-277px)
       }
       81.48148148148148% {
-          -webkit-transform: translateY(-462px);
-          transform: translateY(-462px)
+          -webkit-transform: translateY(-277px);
+          transform: translateY(-277px)
       }
       88.88888888888889% {
-          -webkit-transform: translateY(-528px);
-          transform: translateY(-528px)
+          -webkit-transform: translateY(-314px);
+          transform: translateY(-314px)
       }
       92.5925925925926% {
-          -webkit-transform: translateY(-528px);
-          transform: translateY(-528px)
+          -webkit-transform: translateY(-314px);
+          transform: translateY(-314px)
       }
       100.0% {
-          -webkit-transform: translateY(-594px);
-          transform: translateY(-594px)
+          -webkit-transform: translateY(-360px);
+          transform: translateY(-360px)
       }
   }
 
   @-webkit-keyframes scroll-mobile {
-      0.0% {
-          -webkit-transform: translateY(0px);
-          transform: translateY(0px)
-      }
-      3.7037037037037037% {
-          -webkit-transform: translateY(0px);
-          transform: translateY(0px)
-      }
-      11.11111111111111% {
-          -webkit-transform: translateY(-48px);
-          transform: translateY(-48px)
-      }
-      14.814814814814815% {
-          -webkit-transform: translateY(-48px);
-          transform: translateY(-48px)
-      }
-      22.22222222222222% {
-          -webkit-transform: translateY(-96px);
-          transform: translateY(-96px)
-      }
-      25.925925925925927% {
-          -webkit-transform: translateY(-96px);
-          transform: translateY(-96px)
-      }
-      33.333333333333336% {
-          -webkit-transform: translateY(-144px);
-          transform: translateY(-144px)
-      }
-      37.03703703703704% {
-          -webkit-transform: translateY(-144px);
-          transform: translateY(-144px)
-      }
-      44.44444444444444% {
-          -webkit-transform: translateY(-192px);
-          transform: translateY(-192px)
-      }
-      48.148148148148145% {
-          -webkit-transform: translateY(-192px);
-          transform: translateY(-192px)
-      }
-      55.55555555555556% {
-          -webkit-transform: translateY(-240px);
-          transform: translateY(-240px)
-      }
-      59.25925925925926% {
-          -webkit-transform: translateY(-240px);
-          transform: translateY(-240px)
-      }
-      66.66666666666667% {
-          -webkit-transform: translateY(-288px);
-          transform: translateY(-288px)
-      }
-      70.37037037037037% {
-          -webkit-transform: translateY(-288px);
-          transform: translateY(-288px)
-      }
-      77.77777777777777% {
-          -webkit-transform: translateY(-336px);
-          transform: translateY(-336px)
-      }
-      81.48148148148148% {
-          -webkit-transform: translateY(-336px);
-          transform: translateY(-336px)
-      }
-      88.88888888888889% {
-          -webkit-transform: translateY(-384px);
-          transform: translateY(-384px)
-      }
-      92.5925925925926% {
-          -webkit-transform: translateY(-384px);
-          transform: translateY(-384px)
-      }
-      100.0% {
-          -webkit-transform: translateY(-432px);
-          transform: translateY(-432px)
-      }
-  }
-
-  @keyframes scroll-mobile {
       0.0% {
           -webkit-transform: translateY(0px);
           transform: translateY(0px)
@@ -906,6 +827,85 @@ body {
       }
   }
 
+  @keyframes scroll-mobile {
+      0.0% {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px)
+      }
+      3.7037037037037037% {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px)
+      }
+      11.11111111111111% {
+          -webkit-transform: translateY(-37px);
+          transform: translateY(-37px)
+      }
+      14.814814814814815% {
+          -webkit-transform: translateY(-37px);
+          transform: translateY(-37px)
+      }
+      22.22222222222222% {
+          -webkit-transform: translateY(-74px);
+          transform: translateY(-74px)
+      }
+      25.925925925925927% {
+          -webkit-transform: translateY(-74px);
+          transform: translateY(-74px)
+      }
+      33.333333333333336% {
+          -webkit-transform: translateY(-103px);
+          transform: translateY(-103px)
+      }
+      37.03703703703704% {
+          -webkit-transform: translateY(-103px);
+          transform: translateY(-103px)
+      }
+      44.44444444444444% {
+          -webkit-transform: translateY(-145px);
+          transform: translateY(-145px)
+      }
+      48.148148148148145% {
+          -webkit-transform: translateY(-145px);
+          transform: translateY(-145px)
+      }
+      55.55555555555556% {
+          -webkit-transform: translateY(-178px);
+          transform: translateY(-178px)
+      }
+      59.25925925925926% {
+          -webkit-transform: translateY(-178px);
+          transform: translateY(-178px)
+      }
+      66.66666666666667% {
+          -webkit-transform: translateY(-215px);
+          transform: translateY(-215px)
+      }
+      70.37037037037037% {
+          -webkit-transform: translateY(-215px);
+          transform: translateY(-215px)
+      }
+      77.77777777777777% {
+          -webkit-transform: translateY(-255px);
+          transform: translateY(-255px)
+      }
+      81.48148148148148% {
+          -webkit-transform: translateY(-255px);
+          transform: translateY(-255px)
+      }
+      88.88888888888889% {
+          -webkit-transform: translateY(-295px);
+          transform: translateY(-295px)
+      }
+      92.5925925925926% {
+          -webkit-transform: translateY(-295px);
+          transform: translateY(-295px)
+      }
+      100.0% {
+          -webkit-transform: translateY(-340px);
+          transform: translateY(-340px)
+      }
+  }
+
   #jp1{
       font-family: "Noto Sans JP", sans-serif;
       font-weight: 500;
@@ -918,7 +918,7 @@ body {
 
 .btnGr{
     padding-top: 26px;
-    padding-left: 35px;
+    padding-left: 28px;
     padding-right: 21px;
     display: flex;
     flex-direction: column; /* 세로 배치 */
@@ -1030,7 +1030,7 @@ font-size: 13px;
     border-radius: 8px;
     height: 55px;
     margin-top: 1px;
-    margin-left: 33px;
+    margin-left: 22px;
     margin-right: 23px;
     background-color: #000000;
     color: #ffffff;
