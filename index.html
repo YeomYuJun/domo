@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
-<body class="hide">
+<body>
     <!-- 사이드바 토글 -->
     <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
         =
-    </button>
+    </button> 
     <div id="intro" class="intro tracking-in-expand">domo.</div>
     <!-- 메인 컨테이너 -->
     <div class="main-container hide">
@@ -109,21 +109,29 @@
         });
 
 
-        //intro 글자 추가
+        //intro 글자 애니메이션
         document.addEventListener('DOMContentLoaded', () => {
-        const intro = document.getElementById('intro');
-        
-        setTimeout(() => {
-            document.body.classList.remove('hide');
-            intro.classList.remove('tracking-in-expand');
-            
+            const intro = document.getElementById('intro');
+            const mainContainer = document.querySelector('.main-container');
+
+            // 0.7초간 tracking-in-expand 애니메이션
             setTimeout(() => {
-                intro.classList.add('tracking-in-expand-reverse');
+                intro.classList.remove('tracking-in-expand');
+
+                // 0.7초 대기
                 setTimeout(() => {
-                    intro.style.display = 'none';
+                    // 0.7초간 tracking-in-expand-reverse 애니메이션
+                    intro.classList.add('tracking-in-expand-reverse');
+
+                    setTimeout(() => {
+                        // intro 제거 및 메인 콘텐츠 표시
+                        intro.style.display = 'none';
+                        document.body.classList.add('loaded');
+                        mainContainer.classList.remove('hide');
+                        mainContainer.classList.add('fade-in');
+                    }, 700);
                 }, 700);
             }, 700);
-        }, 100);
         });
     </script>
 </body>
