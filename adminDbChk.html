@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domo.</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/aboutDomo.css">
+      <!-- 테이블 스타일 바로 적용 -->
+    <style>
+      #domoTable {
+        font-size: 13px;
+        font-family: 'Pretendard';
+      }
+
+      .tableArea{
+        
+      }
+
+      /* #domoTable th, #domoTable td {
+        border: 1px solid #825aec;
+        padding: 10px 15px;
+      }
+
+      #domoTable th {
+        background-color: #825aec;
+        color: #fff;
+      }
+
+      #domoTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #domoTable tr:hover {
+        background-color: #dcd0ff;
+      } */
+    </style>
+</head>
+<body>
+    <div class="aboutDomoTxt">
+        <div class="aboutTxt">About</div>
+        <!-- <div class="domoTxt">domo.</div> -->
+        <div id='master-container-scroller'>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>domo.</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#' id="jp1">どうも</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>domo.</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#' id="jp2">どうも</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>domo.</a>
+                </div>
+                <div class='master-container-scroller_item'>
+                  <a class='cta-link' href='#'>圖謀</a>
+                </div>
+              </div>
+    </div>
+    <div class="tableArea">
+      <table id="domoTable" border="1"></table>
+    </div>
+    
+
+    <script>
+      fetch('/php/getAllQuery.php')
+        .then(res => res.json())
+        .then(data => {
+          const table = document.getElementById('domoTable');
+          if (data.length === 0) {
+            table.innerHTML = '<tr><td>데이터 없음</td></tr>';
+            return;
+          }
+
+          // 테이블 헤더
+          const headerRow = document.createElement('tr');
+          Object.keys(data[0]).forEach(key => {
+            const th = document.createElement('th');
+            th.textContent = key;
+            headerRow.appendChild(th);
+          });
+          table.appendChild(headerRow);
+
+          // 테이블 데이터
+          data.forEach(row => {
+            const tr = document.createElement('tr');
+            Object.values(row).forEach(value => {
+              const td = document.createElement('td');
+              td.textContent = value;
+              tr.appendChild(td);
+            });
+            table.appendChild(tr);
+          });
+        })
+        .catch(err => console.error('에러:', err));
+    </script>
+</body>
+</html>
