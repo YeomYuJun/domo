@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domo.</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/lastPage.css">
+</head>
+<body>
+
+    <div class="txt1">
+        thanks for join
+    </div>
+    <div class="txt2">
+        domo2025.
+    </div>
+    <div class="txt3">
+        신청이 완료되었습니다.
+    </div>
+
+    <div class="goHomeBtn" id="joinBtn">
+      Go to home.
+    </div>
+    <div class="footer-tmp-container">
+        <div class="marquee" id="marquee"></div>
+    </div>
+<script>
+    const marquee = document.getElementById('marquee');
+    const text = 'domo.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    const repeatCount = 50;
+
+    for (let i = 0; i < 3; i++) {
+          const span = document.createElement('span');
+          span.innerHTML = text.repeat(repeatCount);
+          marquee.appendChild(span);
+    }
+</script>
+</body>
+</html>

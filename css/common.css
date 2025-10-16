@@ -351,6 +351,43 @@ p {
     100% { transform: translateX(-100%); }
 }
 
+/*푸터 속도랑 간격 조절하고싶은데 위에것들 건드리기 애매해서 추가함 . lastPage.html */
+/*.footer-tmp-container {
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding-bottom:3px;
+}
+
+.marquee {
+            display: flex;
+            animation: scroll 18s linear infinite;
+            white-space: nowrap;
+            will-change: transform;
+}
+
+.marquee span {
+            display: inline-block;
+}
+
+.marquee span {
+            font-size: 18px;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            padding: 0 40px;
+}
+
+@keyframes scroll {
+            0% {
+                transform: translateX(-33.33%);
+            }
+            100% {
+                transform: translateX(-66.66%);
+            }
+}*/
+
 /* 모바일 푸터 조정 */
 @media (max-width: 768px) {
     .footer-slider {

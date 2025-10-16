@@ -1,0 +1,195 @@
+body {
+    color: #ffffff;
+    margin: 0;
+    height: 78vh; /* 전체 화면 높이 */
+    /*background: linear-gradient(to bottom, black, red, white);*/
+    background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
+     background-attachment: fixed; /* 배경 고정 */
+     position: relative;
+}
+
+.aboutDomoTxt{
+    font-size: 26px;
+    margin-left: 38px;
+    margin-top: 50px;
+}
+
+.txt1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    margin-top: 146px;
+}
+
+
+.txt2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+}
+
+.txt3{
+   text-align: center;
+   font-family: 'Pretendard';
+   font-size: 12px;
+   padding-top: 46px;
+}
+
+
+.btnGr{
+    padding-top: 26px;
+    padding-left: 28px;
+    padding-right: 21px;
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    align-items: flex-end; /* 오른쪽 정렬 */
+}
+
+.btnTxt{
+    width: 35px;
+    font-size: 23px;
+    padding-left: 8px;
+}
+
+.btn{
+    font-size: 14px;
+    background: black;
+    text-align: center;
+    border-radius: 5px;
+    width: 64px;
+    height: 63px;
+    margin-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnRec1{
+
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* background-color: #9cecf5; */
+    border-radius: 8px;
+    padding: 8px;
+    height: 79px;
+    margin-top: 14px;
+    /* background-image: url('/image/dishBtnBackGr.png');  */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('/image/dishBtnBackGr.png');
+    background-size: cover; /* 이미지가 영역을 꽉 채움 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+
+        /* 애니메이션 설정 */
+    animation: expandLeft 1s ease-out forwards;
+    transform-origin: right center; /* 오른쪽 기준으로 늘어남 */
+}
+
+.btnRec2{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* background-color: #9cecf5; */
+    border-radius: 8px;
+    padding: 8px;
+    height: 79px;
+    margin-top: 14px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('/image/drinkBtnBg.png');
+    background-size: cover; /* 이미지가 영역을 꽉 채움 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+
+    animation: expandLeft 1s ease-out forwards;
+    transform-origin: right center; /* 오른쪽 기준으로 늘어남 */
+}
+
+.btnRec3{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* background-color: #9cecf5; */
+    border-radius: 8px;
+    padding: 8px;
+    height: 79px;
+    margin-top: 14px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('/image/presentBtnBg.png');
+    background-size: cover; /* 이미지가 영역을 꽉 채움 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+
+    animation: expandLeft 1s ease-out forwards;
+    transform-origin: right center; /* 오른쪽 기준으로 늘어남 */
+}
+
+.underscoreTxt{
+    font-family: 'Arial', sans-serif; /* 원하는 폰트로 */
+    /* 또는 */
+    font-weight: bold;
+    /* 또는 */
+    font-style: italic;
+}
+
+.goHomeBtn{
+    font-size: 13px;
+     border-radius: 8px;
+     height: 55px;
+     margin-top: 275px;
+     margin-left: 22px;
+     margin-right: 23px;
+     /* padding-top: 60px; */
+     /* margin-bottom: 10px; */
+     background-color: #2f2f2f;
+     color: #ffffff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.descTxt{
+         margin-top: 21px;
+    font-size: 9px;
+    /* margin-left: 35px; */
+    text-align: center;
+    font-family: 'Pretendard';
+}
+
+.footer-tmp-container {
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding-bottom:3px;
+}
+
+.marquee {
+            display: flex;
+            animation: scroll 14s linear infinite;
+            white-space: nowrap;
+            will-change: transform;
+}
+
+.marquee span {
+            display: inline-block;
+}
+
+.marquee span {
+            font-size: 18px;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            padding: 0 40px;
+}
+
+@keyframes scroll {
+            0% {
+                transform: translateX(-33.33%);
+            }
+            100% {
+                transform: translateX(-66.66%);
+            }
+}

@@ -1,7 +1,7 @@
 body {
     color: #ffffff;
     margin: 0;
-    height: 100vh; /* 전체 화면 높이 */
+    height: 87vh; /* 전체 화면 높이 */
     /*background: linear-gradient(to bottom, black, red, white);*/
     background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
      background-attachment: fixed; /* 배경 고정 */
@@ -18,12 +18,12 @@ body {
 }
 
 .domoInfoTxt {
-        font-size: 13px;
-        font-family: 'Pretendard';
-        font-weight: 200;
-        text-align: right;
-        padding-right: 19px;
-        padding-top: 78px;
+     font-size: 11px;
+     font-family: 'Pretendard';
+     font-weight: 200;
+     text-align: right;
+     padding-right: 19px;
+     padding-top: 64px;
 }
 
 
@@ -917,7 +917,7 @@ body {
   }
 
 .btnGr{
-    padding-top: 26px;
+    padding-top: 5px;
     padding-left: 28px;
     padding-right: 21px;
     display: flex;
