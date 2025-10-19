@@ -1047,3 +1047,92 @@ font-size: 13px;
     text-align: center;
     font-family: 'Pretendard';
 }
+
+  /* 🌟 모달 오버레이 - 블러 처리된 배경 */
+        .modal-overlay {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* 어두운 반투명 배경 */
+            backdrop-filter: blur(10px); /* 🎨 블러 효과 */
+            -webkit-backdrop-filter: blur(10px); /* Safari용 */
+            z-index: 9998;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* ✨ 모달이 활성화될 때 */
+        .modal-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 🖼️ 확대된 이미지 컨테이너 */
+        .modal-content {
+            position: relative;
+            max-width: 70%;
+            max-height: 70vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        /* 📷 확대된 이미지 */
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ❌ 닫기 버튼 */
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 9999;
+        }
+
+       .modal-close:hover {
+             transform: scale(1.2);
+         }
+
+         /* 🎬 페이드인 애니메이션 */
+         @keyframes fadeIn {
+             from {
+                 opacity: 0;
+             }
+             to {
+                 opacity: 1;
+             }
+         }
+
+         /* 🎬 줌인 애니메이션 */
+         @keyframes zoomIn {
+             from {
+                 transform: scale(0.7);
+                 opacity: 0;
+             }
+             to {
+                 transform: scale(1);
+                 opacity: 1;
+             }
+         }
+
+         /* 🖱️ 버튼 클릭 가능 표시 */
+         .btn {
+             cursor: pointer;
+             transition: transform 0.2s ease;
+         }
+
+         .btn:hover {
+             transform: scale(1.05);
+         }
