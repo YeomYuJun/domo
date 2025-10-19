@@ -1,7 +1,7 @@
 body {
     color: #ffffff;
     margin: 0;
-    height: 78vh; /* 전체 화면 높이 */
+    min-height: 100vh; /* 변경 */
     /*background: linear-gradient(to bottom, black, red, white);*/
     background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
      background-attachment: fixed; /* 배경 고정 */
@@ -19,7 +19,51 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 23px;
-    margin-top: 146px;
+    margin-top: 74px;
+}
+
+.video1{
+     padding-top: 71px;
+     position: relative;
+}
+
+.video2{
+    height: 69px;
+    margin-top: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.video2 video {
+    width: 80%;                  /* 화면 너비의 80% */
+    height: 80%;                 /* 화면 높이의 80% */
+    object-fit: cover;           /* 비디오 비율 유지하며 꽉 채우기 */
+}
+
+.video3{
+    height: 69px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.video3 video {
+    width: 80%;                  /* 화면 너비의 80% */
+    height: 80%;                 /* 화면 높이의 80% */
+    object-fit: cover;           /* 비디오 비율 유지하며 꽉 채우기 */
+}
+
+.overlay-rect {
+    position: absolute;
+    width: 62px;
+    height: 30px;
+    background-color: black;  /* 원하는 색상 */
+    bottom: 0;       /* 맨 아래 */
+    right: 0;        /* 오른쪽 끝 */
 }
 
 
@@ -34,7 +78,7 @@ body {
    text-align: center;
    font-family: 'Pretendard';
    font-size: 12px;
-   padding-top: 46px;
+   padding-top: 15px;
 }
 
 
@@ -136,18 +180,22 @@ body {
 
 .goHomeBtn{
     font-size: 13px;
-     border-radius: 8px;
-     height: 55px;
-     margin-top: 275px;
-     margin-left: 22px;
-     margin-right: 23px;
-     /* padding-top: 60px; */
-     /* margin-bottom: 10px; */
-     background-color: #2f2f2f;
-     color: #ffffff;
-     display: flex;
-     justify-content: center;
-     align-items: center;
+    border-radius: 8px;
+    height: 55px;
+    width: 84%;
+    background-color: #2f2f2f;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: calc(3px + 0px);
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 44px;
 }
 
 .descTxt{

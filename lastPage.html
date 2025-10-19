@@ -9,15 +9,39 @@
 </head>
 <body>
 
-    <div class="txt1">
-        thanks for join
+<!--    <div class="txt1">-->
+<!--        thanks for join-->
+<!--    </div>-->
+<!--    <div class="txt2">-->
+<!--        domo2025.-->
+<!--    </div>-->
+    <div class="video1">
+        <video src="/video/thksfor.mp4" autoplay muted loop playsinline>
+            브라우저가 <code>video</code> 태그를 지원하지 않습니다.
+        </video>
+        <div class="overlay-rect"></div>
     </div>
-    <div class="txt2">
-        domo2025.
-    </div>
+
     <div class="txt3">
         신청이 완료되었습니다.
     </div>
+
+    <div class="video2">
+        <video id="video2" src="/video/noti1.mp4" autoplay muted playsinline>
+            브라우저가 <code>video</code> 태그를 지원하지 않습니다.
+        </video>
+<!--        <div class="overlay-rect"></div>-->
+    </div>
+
+    <div class="video3">
+        <video id="video3" src="/video/noti2.mp4" autoplay muted playsinline>
+            브라우저가 <code>video</code> 태그를 지원하지 않습니다.
+        </video>
+<!--        <div class="overlay-rect"></div>-->
+    </div>
+
+<!--    <div class="blank"></div>-->
+
 
     <div class="goHomeBtn" id="joinBtn">
       Go to home.
@@ -35,6 +59,36 @@
           span.innerHTML = text.repeat(repeatCount);
           marquee.appendChild(span);
     }
+
+
+    //비디오 멈추기.
+    const video2 = document.getElementById('video2');
+
+    video2.addEventListener('timeupdate', function() {
+        if (video2.currentTime >= 1) {
+            video2.pause();
+            // 이벤트 리스너 제거 (한 번만 실행되도록)
+            video2.removeEventListener('timeupdate', arguments.callee);
+        }
+    });
+
+    const video3 = document.getElementById('video3');
+
+    // video3의 autoplay 제거를 위해 초기에 pause
+    video3.pause();
+
+    // 1초 후 재생
+    setTimeout(function() {
+        video3.play();
+    }, 2000);
+
+    // video3 재생 시작 후 2초 지점에서 정지
+    video3.addEventListener('timeupdate', function() {
+        if (video3.currentTime >= 1) {
+            video3.pause();
+            video3.removeEventListener('timeupdate', arguments.callee);
+        }
+    });
 </script>
 </body>
 </html>
