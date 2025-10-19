@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     exit;
 }
 
-$sql = "SELECT COUNT(*) AS count FROM domo";
+$sql = "SELECT COUNT(*) AS count FROM domo WHERE join_year = 2025";
 $result = $conn->query($sql);
 
 if(!$result) {
