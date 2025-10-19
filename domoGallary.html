@@ -6,6 +6,20 @@
     <title>domo.</title>
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/domoGallary.css">
+    <script>
+        // CSS 파일을 타임스탬프와 함께 동적으로 로드
+        const cssTimestamp = new Date().getTime();
+
+        const commonCss = document.createElement('link');
+        commonCss.rel = 'stylesheet';
+        commonCss.href = `/css/common.css?t=${cssTimestamp}`;
+        document.head.appendChild(commonCss);
+
+        const aboutDomoCss = document.createElement('link');
+        aboutDomoCss.rel = 'stylesheet';
+        aboutDomoCss.href = `/css/domoGallary.css?t=${cssTimestamp}`;
+        document.head.appendChild(aboutDomoCss);
+    </script>
 </head>
 <body>
 <!-- 사이드바 토글 -->
@@ -78,11 +92,29 @@
     <!-- 푸터 콘텐츠 -->
 </div>
 
-<!-- 공통 JS -->
-<script src="/js/common.js"></script>
 
 </body>
 <script>
+    // common.js를 타임스탬프와 함께 동적으로 로드
+    const timestamp = new Date().getTime();
+    const script = document.createElement('script');
+    script.src = `/js/common.js?t=${timestamp}`;
+
+    // common.js 로드 완료 후 초기화
+    script.onload = function() {
+        // DOM 로드 후 페이지 컴포넌트 초기화
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else {
+            // DOM이 이미 로드된 경우 즉시 실행
+            initializePage();
+        }
+    };
+
+    document.head.appendChild(script);
+
+
+
     // 🎯 이미지 모달 열기 함수
  function openModal(imageSrc) {
      const modal = document.getElementById('imageModal');
@@ -131,6 +163,24 @@
      console.log('Join 2025 domo clicked');
      window.location.href = "/aboutJoin.html";
  }
+ function initializePage() {
+    // 사이드바 로드
+    if (typeof loadSidebar === 'function') {
+        loadSidebar('default-sidebar');
+    }
+
+    // 푸터 로드
+    if (typeof loadFooter === 'function') {
+        loadFooter('main-footer');
+    }
+
+    // ESC 키로 사이드바 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSidebar();
+        }
+    });
+}
 
  function toggleSidebar() {
      const sidebar = document.getElementById('sidebar');
@@ -152,24 +202,5 @@
      document.body.style.overflow = '';
  }
 
- // DOM 로드 후 페이지 컴포넌트 초기화
- document.addEventListener('DOMContentLoaded', function() {
-     // 사이드바 로드
-     if (typeof loadSidebar === 'function') {
-         loadSidebar('default-sidebar');
-     }
-
-     // 푸터 로드
-     if (typeof loadFooter === 'function') {
-         loadFooter('main-footer');
-     }
-
-     // ESC 키로 사이드바 닫기
-     document.addEventListener('keydown', function(e) {
-         if (e.key === 'Escape') {
-             closeSidebar();
-         }
-     });
- });
 </script>
 </html>

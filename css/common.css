@@ -280,6 +280,9 @@ p {
     align-items: center;
     justify-content: center;
 }
+.sidebar-close:focus {
+    outline: none;
+}
 
 /* 사이드바 토글 버튼 */
 .sidebar-toggle {

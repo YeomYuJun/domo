@@ -1,7 +1,7 @@
 body {
     color: #ffffff;
     margin: 0;
-    height: 87vh; /* 전체 화면 높이 */
+    min-height: 100vh; /* 최소 높이 설정 */
     /*background: linear-gradient(to bottom, black, red, white);*/
     background: linear-gradient(to bottom, #000000 0%, #000000 78%, #404040 89%, #666666 100%);
      background-attachment: fixed; /* 배경 고정 */
@@ -1034,10 +1034,10 @@ font-size: 13px;
     margin-right: 23px;
     background-color: #000000;
     color: #ffffff;
-    display: flex
-;
+    display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .descTxt{
@@ -1054,8 +1054,11 @@ font-size: 13px;
             position: fixed;
             top: 0;
             left: 0;
+            bottom: 0;
+            right: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
+            height: 100dvh; /* 동적 뷰포트 높이 */
             background-color: rgba(0, 0, 0, 0.85); /* 어두운 반투명 배경 */
             backdrop-filter: blur(10px); /* 🎨 블러 효과 */
             -webkit-backdrop-filter: blur(10px); /* Safari용 */
