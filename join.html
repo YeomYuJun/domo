@@ -37,7 +37,7 @@
                     <p class="sec-t">Role</p>
                     <div class="radio-wrap">
                         <div class="radio-item">
-                            <input id="role-dish" type="radio" name="role" value="dish" disabled>
+                            <input id="role-dish" type="radio" name="role" value="dish">
                             <label for="role-dish">dish</label>
                         </div>
 
@@ -135,6 +135,11 @@
             });
         });
 
+        document.getElementById('role-dish').addEventListener('click', function(e){
+            domo.showAlert('Dish는 인원초과로 선택할 수 없습니다.');
+            e.preventDefault();
+            e.stopPropagation();
+        })
 
         // 한글 전용 이름 입력 처리 (6자리 제한)
         document.getElementById('name').addEventListener('input', function(e) {
@@ -263,14 +268,34 @@
                 return;
             }
 
-            // 모든 검증 통과
-            domo.showAlert('신청이 완료되었습니다!');
-            // TODO: 실제 제출 로직 구현
             const formData = {
-                name, phone, role: role.value
+                name, phone, role: role.value, join_year: 2025, payment_yn : 'N'
             }
 
-            console.log('Form data:', formData);
+            // 서버에 데이터 전송
+            fetch('/php/addJoinQuery.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    domo.showAlert('신청이 완료되었습니다!');
+                    // 폼 초기화
+                    document.getElementById('name').value = '';
+                    document.getElementById('phone').value = '';
+                    document.querySelectorAll('input[name="role"]').forEach(radio => radio.checked = false);
+                } else {
+                    domo.showAlert(data.error || '신청 중 오류가 발생했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                domo.showAlert('서버 연결에 실패했습니다.<br>잠시 후 다시 시도해주세요.');
+            });
         }
     </script>
 </body>

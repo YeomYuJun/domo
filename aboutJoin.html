@@ -122,8 +122,6 @@
 
 
         document.getElementById('joinBtn').addEventListener('click', function(){
-            domo.showAlert('도모를 찾아주셔서 감사합니다.<br>아쉽게도 정원이 초과되어<br>올해 신청이 마감되었습니다.');
-            return;
             fetch('/php/getCountQuery.php')
             .then(res => res.json())
             .then(data => {

@@ -157,12 +157,12 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 108px;
-    height: 107px;
+    width: 100%;
     /* padding-left: 28px; */
     /* margin-left: 4px; */
     margin-bottom: 4px;
     margin-top: -30px;
+    aspect-ratio: 1 / 1;
 }
 
 .pic6{
@@ -170,12 +170,12 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 108px;
-    height: 107px;
+    width: 100%;
     /* padding-left: 28px; */
     margin-left: 4px;
     margin-bottom: 4px;
     margin-top: -30px;
+    aspect-ratio: 1 / 1;
 }
 
 .pic7{
@@ -183,12 +183,12 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 108px;
-    height: 107px;
+    width: 100%;
     /* padding-left: 28px; */
     margin-left: 4px;
     margin-bottom: 4px;
     margin-top: -30px;
+    aspect-ratio: 1 / 1;
 }
 
 
