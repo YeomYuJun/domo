@@ -246,28 +246,28 @@
 
             // 1. 이름 검증 (한글 2-6자)
             if (!name || name.length < 2 || name.length > 6) {
-                alert('이름은 한글 2-6자로 입력해주세요.');
+                domo.showAlert('이름은 한글 2-6자로 입력해주세요.');
                 return;
             }
 
             // 2. 전화번호 검증 (000-0000-0000 형식)
             const phonePattern = /^010-\d{4}-\d{4}$/;
             if (!phone || !phonePattern.test(phone)) {
-                alert('전화번호를 올바른 형식으로 입력해주세요. (010-0000-0000)');
+                domo.showAlert('전화번호를 올바른 형식으로 입력해주세요.\n(010-0000-0000)');
                 return;
             }
 
             // 3. 역할 선택 검증
             if (!role) {
-                alert('역할을 선택해주세요.');
+                domo.showAlert('역할을 선택해주세요.');
                 return;
             }
 
             // 모든 검증 통과
-            alert('신청이 완료되었습니다!');
+            domo.showAlert('신청이 완료되었습니다!');
             // TODO: 실제 제출 로직 구현
             const formData = {
-                name, phone, role: role.value 
+                name, phone, role: role.value
             }
 
             console.log('Form data:', formData);

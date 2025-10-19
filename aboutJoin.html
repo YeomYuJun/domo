@@ -17,8 +17,8 @@
     <!-- End 콘텐츠 영역-->
     <div class="main-container">
         <div class="aboutDomoTxt">
-            <div class="aboutTxt">About</div>
-            <div class="domoTxt">domo.</div>
+            <div class="aboutTxt">Party</div>
+            <div class="domoTxt">info.</div>
         </div>
         <div class="domo-info">
             <div class="info-sec">
@@ -122,9 +122,21 @@
 
 
         document.getElementById('joinBtn').addEventListener('click', function(){
+            domo.showAlert('도모를 찾아주셔서 감사합니다.<br>아쉽게도 정원이 초과되어<br>올해 신청이 마감되었습니다.');
+            return;
+            fetch('/php/getCountQuery.php')
+            .then(res => res.json())
+            .then(data => {
+            console.log('d count:', data.count);
             
+            if(data.count >= 16) {
+                domo.showAlert('도모를 찾아주셔서 감사합니다.<br>아쉽게도 정원이 초과되어 올해 신청이 마감되었습니다.');
+            } else {
+                toJoin();
+            }
 
-            toJoin();
+            })
+            .catch(err => console.error('에러 발생:', err));
         })
 
         function toJoin(){
