@@ -406,3 +406,80 @@ p {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
+
+
+/* 커스텀 알림 모달 */
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-alert.show {
+    display: flex;
+}
+
+.custom-alert-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.custom-alert-box {
+    position: relative;
+    z-index: 10001;
+    width: 270px;
+    background-color: #BCBCBC;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    gap: 8px;
+}
+
+.custom-alert-box .alert-message-ttl {
+    color: #161616;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-alert-box .alert-message {
+    color: #161616;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+/* 모바일 알림 조정 */
+@media (max-width: 768px) {
+    .custom-alert-box {
+        width: 80vw;
+        max-width: 270px;
+        height: auto;
+        min-height: 90px;
+    }
+
+    .custom-alert-box .alert-message {
+        font-size: 12px;
+    }
+}

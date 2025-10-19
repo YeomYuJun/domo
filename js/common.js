@@ -469,32 +469,53 @@ function fadeOut(element, duration = 300) {
     requestAnimationFrame(fade);
 }
 
-// 오류 로깅
-function logError(message, error = null) {
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.error(`[DOMO] ${message}`, error);
+// 커스텀 알림 시스템
+function initializeCustomAlert() {
+    // 알림 HTML이 이미 존재하면 생성하지 않음
+    if (document.getElementById('customAlert')) {
+        return;
     }
+
+    const alertHTML = `
+        <div id="customAlert" class="custom-alert">
+            <div class="custom-alert-backdrop"></div>
+            <div class="custom-alert-box">
+                <p class="alert-message-ttl pretendard">domo.</p>
+                <span id="alertMessage" class="alert-message pretendard"></span>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', alertHTML);
 }
 
-// 성능 측정
-async function measurePerformance(name, fn) {
-    const start = performance.now();
-    try {
-        const result = await fn();
-        const end = performance.now();
-        console.log(`[성능] ${name}: ${(end - start).toFixed(2)}ms`);
-        return result;
-    } catch (error) {
-        const end = performance.now();
-        console.error(`[성능] ${name} 실패 ${(end - start).toFixed(2)}ms:`, error);
-        throw error;
+// 커스텀 알림 표시 함수
+function showCustomAlert(message) {
+    const alertModal = document.getElementById('customAlert');
+    const alertMessage = document.getElementById('alertMessage');
+
+    if (!alertModal || !alertMessage) {
+        console.error('커스텀 알림 요소가 없습니다. initializeDomo()가 실행되었는지 확인하세요.');
+        return;
     }
+
+    alertMessage.innerHTML = message;
+    alertModal.classList.add('show');
+
+    // 모달 클릭 시 닫기
+    const closeModal = function() {
+        alertModal.classList.remove('show');
+        alertModal.removeEventListener('click', closeModal);
+    };
+
+    alertModal.addEventListener('click', closeModal);
 }
 
 // 도모 초기화
 function initializeDomo() {
     initializeCommonEvents();
-    
+    initializeCustomAlert();
+
     const sidebar = document.getElementById('sidebar');
     if (sidebar) {
         const overlay = document.querySelector('.sidebar-overlay');
@@ -502,7 +523,7 @@ function initializeDomo() {
             overlay.addEventListener('click', closeSidebar);
         }
     }
-    
+
     console.log('[DOMO] 템플릿 시스템 초기화됨');
 }
 
@@ -526,7 +547,7 @@ window.domo = {
     smoothScrollTo,
     fadeIn,
     fadeOut,
-    measurePerformance,
     toggleSidebar,
-    closeSidebar
+    closeSidebar,
+    showAlert: showCustomAlert
 };
