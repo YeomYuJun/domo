@@ -5,25 +5,25 @@ const SIDEBAR_TEMPLATES = {
     'default-sidebar': `
         <nav class="sidebar-nav">
             <div class="h50 sidebar-top">
-                <h3 style="text-align:right; color: #fff; margin-bottom: 1rem; font-size: 1.5rem;">domo.</h3>
+                <h3 style="text-align:right; color: #fff; margin-bottom: 1.1rem; font-size: 1.5rem;">domo.</h3>
+                <h4 class="pretendard" style="text-align:right; margin-bottom: 0.1rem;" >도모</h4>
                 <h4 style="text-align:right;">圖謀</h4>
                 <h4 style="text-align:right;">どうも</h4>
-                <h4 class="pretendard" style="text-align:right;">도모</h4>
             </div>
             <div class="h50 sidebar-bottom">
                 <ul class="sidebar-menu">
                     <li><a href="/" class="sidebar-link">home.</a></li>
-                    <li><a href="/" class="gray-color sidebar-link">domo 2019.</a></li>
-                    <li><a href="/" class="gray-color sidebar-link">domo 2020.</a></li>
-                    <li><a href="/" class="gray-color sidebar-link">domo 2021.</a></li>
-                    <li><a href="/" class="sidebar-link">domo 2024.</a></li>
-                    <li><a href="/" class="sidebar-link">domo 2025.</a></li>
+                    <li><a class="gray-color sidebar-link">domo 2019.</a></li>
+                    <li><a class="gray-color sidebar-link">domo 2020.</a></li>
+                    <li><a class="gray-color sidebar-link">domo 2021.</a></li>
+                    <li><a href="/domoGallary.html" class="sidebar-link">domo 2024.</a></li>
+                    <li><a class="gray-color sidebar-link">domo 2025.</a></li>
                 </ul>
-                <p style="text-align: right; font-size: 11px;">
-                    Copyright 2025.<br>
-                    Jonghyeok Yoon,<br>
-                    Junggi Song,<br>
-                    Jujun Yeom<br>
+                <p class="pretendard" style="text-align: right; font-size: 8px;">
+                    Copyrightⓒ2025<br>
+                    Yujun Yeom<br>
+                    Junggi Song<br>
+                    Jonghyeok Yoon<br>
                 </p>
             </div>
         </nav>
@@ -33,8 +33,8 @@ const SIDEBAR_TEMPLATES = {
             }
             .sidebar-nav {
                 height: 100%;
-                padding-top: 2rem;
-                padding-right: 1rem;
+                padding-top: 4.0rem;
+                padding-right: 0rem;
                 display: flex;
                 flex-direction: column;
             }
@@ -53,7 +53,7 @@ const SIDEBAR_TEMPLATES = {
             .sidebar-menu {
                 display: flex;
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0rem;
                 align-items: flex-end;
             }
             .sidebar-link {

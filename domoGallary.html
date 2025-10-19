@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="/css/domoGallary.css">
 </head>
 <body>
-    <div class="domo2024Txt">domo<span class="underscoreTxt">_</span> 2024</div>
+<!-- 사이드바 토글 -->
+<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="메뉴 열기">
+    =
+</button>
+<div class="domo2024Txt">domo<span class="underscoreTxt">_</span> 2024</div>
     <div class="infoGr">
       <div class="prImg">
         <div class="domoTxt">domo</div>
@@ -34,19 +38,138 @@
     </div>
     <div class="picGr">
       <div class="bigPicGr">
-        <div class="pic1"></div>
+          <!-- 📸 클릭 이벤트 추가 -->
+          <div class="pic1" onclick="openModal('/image/menu2024.png')"></div>
         <div class="grRight">
-          <div class="pic2"></div>
-          <div class="pic3"></div>
-          <div class="pic4"></div>
+            <div class="pic2" onclick="openModal('/image/2024_1.jpg')"></div>
+            <div class="pic3" onclick="openModal('/image/2024_2.5.jpg')"></div>
+            <div class="pic4" onclick="openModal('/image/2024_3.jpg')"></div>
         </div>
       </div>
       <div class="smallPicGr">
-        <div class="pic5"></div>
-        <div class="pic6"></div>
-        <div class="pic7"></div>
+          <div class="pic5" onclick="openModal('/image/2024_4.jpg')"></div>
+          <div class="pic6" onclick="openModal('/image/2024_5.jpg')"></div>
+          <div class="pic7" onclick="openModal('/image/2024_6.jpg')"></div>
       </div>
     </div>
 
+<div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal(event)">×</button>
+        <img class="modal-image" id="modalImage" src="" alt="확대 이미지">
+    </div>
+</div>
+
+<!-- 사이드바 오버레이 -->
+<div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- 사이드바 -->
+<div class="sidebar" id="sidebar">
+    <button class="sidebar-close" onclick="closeSidebar()" aria-label="메뉴 닫기">
+        ×
+    </button>
+    <div id="sidebar-content">
+        <!-- 사이드바 콘텐츠 -->
+    </div>
+</div>
+
+<!-- 푸터 -->
+<div id="footer-container">
+    <!-- 푸터 콘텐츠 -->
+</div>
+
+<!-- 공통 JS -->
+<script src="/js/common.js"></script>
+
 </body>
+<script>
+    // 🎯 이미지 모달 열기 함수
+ function openModal(imageSrc) {
+     const modal = document.getElementById('imageModal');
+     const modalImg = document.getElementById('modalImage');
+
+     // 📷 클릭한 이미지의 경로를 모달 이미지에 설정
+     modalImg.src = imageSrc;
+
+     modal.classList.add('active');
+
+     document.body.style.overflow = 'hidden';
+ }
+
+    function closeModal(event) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        // 이미지 자체를 클릭한 경우에는 닫히지 않도록 처리
+        if (event.target === modalImage) {
+            return;
+        }
+
+        modal.classList.remove('active');
+
+        document.body.style.overflow = '';
+    }
+
+ document.addEventListener('keydown', function(e) {
+     if (e.key === 'Escape') {
+         const modal = document.getElementById('imageModal');
+         if (modal.classList.contains('active')) {
+             modal.classList.remove('active');
+             document.body.style.overflow = '';
+         }
+     }
+ });
+
+
+ // 페이지 전용 자바스크립트
+ function handleAboutClick() {
+     console.log('About domo clicked');
+     window.location.href = "aboutDomo.html";
+ }
+
+ function handleJoinClick() {
+     console.log('Join 2025 domo clicked');
+     window.location.href = "/aboutJoin.html";
+ }
+
+ function toggleSidebar() {
+     const sidebar = document.getElementById('sidebar');
+     const overlay = document.querySelector('.sidebar-overlay');
+
+     sidebar.classList.toggle('active');
+     overlay.classList.toggle('active');
+
+     // 사이드바 열릴 때 body 스크롤 방지
+     document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+ }
+
+ function closeSidebar() {
+     const sidebar = document.getElementById('sidebar');
+     const overlay = document.querySelector('.sidebar-overlay');
+
+     sidebar.classList.remove('active');
+     overlay.classList.remove('active');
+     document.body.style.overflow = '';
+ }
+
+ // DOM 로드 후 페이지 컴포넌트 초기화
+ document.addEventListener('DOMContentLoaded', function() {
+     // 사이드바 로드
+     if (typeof loadSidebar === 'function') {
+         loadSidebar('default-sidebar');
+     }
+
+     // 푸터 로드
+     if (typeof loadFooter === 'function') {
+         loadFooter('main-footer');
+     }
+
+     // ESC 키로 사이드바 닫기
+     document.addEventListener('keydown', function(e) {
+         if (e.key === 'Escape') {
+             closeSidebar();
+         }
+     });
+ });
+</script>
 </html>

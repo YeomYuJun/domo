@@ -268,7 +268,7 @@ p {
 .sidebar-close {
     position: absolute;
     top: 2rem;
-    right: 2rem;
+    right: 1.2rem;
     background: none;
     border: none;
     color: #fff;
