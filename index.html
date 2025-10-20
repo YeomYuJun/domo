@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>domo.</title>
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/index.css">
     <script>
-        // CSS 파일을 타임스탬프와 함께 동적으로 로드
-        const cssTimestamp = new Date().getTime();
-
-        const commonCss = document.createElement('link');
-        commonCss.rel = 'stylesheet';
-        commonCss.href = `/css/common.css?t=${cssTimestamp}`;
-        document.head.appendChild(commonCss);
-
-        const aboutDomoCss = document.createElement('link');
-        aboutDomoCss.rel = 'stylesheet';
-        aboutDomoCss.href = `/css/index.css?t=${cssTimestamp}`;
-        document.head.appendChild(aboutDomoCss);
+        // CSS 파일을 타임스탬프와 함께 즉시 로드하여 캐싱 방지
+        const t = new Date().getTime();
+        document.write(`<link rel="stylesheet" href="/css/common.css?t=${t}">`);
+        document.write(`<link rel="stylesheet" href="/css/index.css?t=${t}">`);
     </script>
 </head>
 <body>

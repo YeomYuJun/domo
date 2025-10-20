@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>domo.</title>
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/aboutDomo.css">
     <script>
-        // CSS 파일을 타임스탬프와 함께 동적으로 로드
-        const cssTimestamp = new Date().getTime();
-
-        const commonCss = document.createElement('link');
-        commonCss.rel = 'stylesheet';
-        commonCss.href = `/css/common.css?t=${cssTimestamp}`;
-        document.head.appendChild(commonCss);
-
-        const aboutDomoCss = document.createElement('link');
-        aboutDomoCss.rel = 'stylesheet';
-        aboutDomoCss.href = `/css/aboutDomo.css?t=${cssTimestamp}`;
-        document.head.appendChild(aboutDomoCss);
+        // CSS 파일을 타임스탬프와 함께 즉시 로드하여 캐싱 방지
+        const t = new Date().getTime();
+        document.write(`<link rel="stylesheet" href="/css/common.css?t=${t}">`);
+        document.write(`<link rel="stylesheet" href="/css/aboutDomo.css?t=${t}">`);
     </script>
 </head>
 <body>
@@ -28,36 +18,15 @@
     </button>
     <div class="aboutDomoTxt">
         <div class="aboutTxt">About</div>
-        <!-- <div class="domoTxt">domo.</div> -->
-        <div id='master-container-scroller'>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>domo.</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#' id="jp1">どうも</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>domo.</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#' id="jp2">どうも</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>domo.</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-              </div>
+        <!-- 3D 큐브 컨테이너 -->
+        <div class="cube-container">
+            <div class="cube">
+                <div class="cube-face cube-face-front">domo.</div>
+                <div class="cube-face cube-face-bottom" id="jp1">どうも</div>
+                <div class="cube-face cube-face-back">圖謀</div>
+                <div class="cube-face cube-face-top pretendard">도모</div>
+            </div>
+        </div>
     </div>
     <div class="domoInfoTxt">
         Private Dining Party 인 domo는</br>
