@@ -156,6 +156,7 @@ body {
 
   @media screen and (max-width: 615px) {
       .cube-container {
+          padding-left: 3px;
           height: 40px;
           perspective-origin: center center;
       }
