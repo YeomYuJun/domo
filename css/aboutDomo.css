@@ -164,7 +164,7 @@ body {
       }
       .cube-face {
           height: 40px;
-          font-size: 16px;
+          font-size: 24px;
       }
       .cube-face-front {
           transform: translateZ(20px);
