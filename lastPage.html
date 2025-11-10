@@ -89,6 +89,14 @@
             video3.removeEventListener('timeupdate', arguments.callee);
         }
     });
+
+
+    const goHomeBtn = document.getElementById('joinBtn');
+    if (goHomeBtn) {
+        goHomeBtn.addEventListener('click', function() {
+            window.location.href = '/';
+        });
+    }
 </script>
 </body>
 </html>
