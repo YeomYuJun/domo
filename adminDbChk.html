@@ -14,26 +14,58 @@
       }
 
       .tableArea{
-        
+        display: none; /* 기본적으로 숨김 */
       }
 
-      /* #domoTable th, #domoTable td {
-        border: 1px solid #825aec;
-        padding: 10px 15px;
+      .loginArea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 50vh;
+        gap: 15px;
       }
 
-      #domoTable th {
-        background-color: #825aec;
-        color: #fff;
+      .loginArea input {
+        padding: 10px;
+        width: 250px;
+        font-size: 14px;
+        border: 1px solid #1b1b1b;
+        border-radius: 4px;
       }
 
-      #domoTable tr:nth-child(even) {
-        background-color: #f2f2f2;
+      .loginArea button {
+        padding: 10px 20px;
+        background-color: #1b1b1b;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
       }
 
-      #domoTable tr:hover {
-        background-color: #dcd0ff;
-      } */
+      .loginArea button:hover {
+        background-color: #494949;
+      }
+
+      .payment-select {
+        padding: 5px 10px;
+        font-size: 13px;
+        border: 1px solid #1b1b1b;
+        border-radius: 4px;
+        background-color: #242acc;
+        cursor: pointer;
+        font-family: 'Pretendard';
+      }
+
+      .payment-select:hover {
+        background-color: #2b32f1;
+      }
+      #domoTable td, #domoTable th {
+        text-align: center;
+        padding: 5px;
+      }
+
     </style>
 </head>
 <body>
@@ -41,71 +73,165 @@
         <div class="aboutTxt">About</div>
         <!-- <div class="domoTxt">domo.</div> -->
         <div id='master-container-scroller'>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>domo.</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#' id="jp1">どうも</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>domo.</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#' id="jp2">どうも</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>domo.</a>
-                </div>
-                <div class='master-container-scroller_item'>
-                  <a class='cta-link' href='#'>圖謀</a>
-                </div>
-              </div>
+          <div class='master-container-scroller_item'>
+            <a class='cta-link' href='#'>domo.</a>
+          </div>
+        </div>
     </div>
-    <div class="tableArea">
+
+    <!-- 로그인 영역 -->
+    <div class="loginArea" id="loginArea">
+      <input type="text" id="adminId" placeholder="ID">
+      <input type="password" id="adminPw" placeholder="Password">
+      <button onclick="login()">로그인</button>
+    </div>
+
+    <!-- 테이블 영역 (로그인 후 표시) -->
+    <div class="tableArea" id="tableArea">
       <table id="domoTable" border="1"></table>
     </div>
     
 
     <script>
-      fetch('/php/getAllQuery.php')
-        .then(res => res.json())
-        .then(data => {
-          const table = document.getElementById('domoTable');
-          if (data.length === 0) {
-            table.innerHTML = '<tr><td>데이터 없음</td></tr>';
-            return;
+      // 로그인 함수 (PHP에서 해싱 처리)
+      async function login() {
+        const id = document.getElementById('adminId').value;
+        const pw = document.getElementById('adminPw').value;
+
+        if (!id || !pw) {
+          alert('ID와 비밀번호를 입력해주세요.');
+          return;
+        }
+
+        try {
+          // 평문 그대로 PHP로 전송 (PHP에서 해싱 처리)
+          const response = await fetch('/php/adminLogin.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id: id, password: pw})
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            // 로그인 성공 시 로그인 폼 숨기고 테이블 표시
+            document.getElementById('loginArea').style.display = 'none';
+            document.getElementById('tableArea').style.display = 'block';
+            loadTableData();
+          } else {
+            alert('로그인 실패: ID 또는 비밀번호가 올바르지 않습니다.');
           }
+        } catch (err) {
+          console.error('로그인 에러:', err);
+          alert('로그인 처리 중 오류가 발생했습니다.');
+        }
+      }
 
-          // 테이블 헤더
-          const headerRow = document.createElement('tr');
-          Object.keys(data[0]).forEach(key => {
-            const th = document.createElement('th');
-            th.textContent = key;
-            headerRow.appendChild(th);
-          });
-          table.appendChild(headerRow);
+      // 테이블 데이터 로드 함수
+      function loadTableData() {
+        fetch('/php/getAllQuery.php')
+          .then(res => res.json())
+          .then(data => {
+            const table = document.getElementById('domoTable');
+            if (data.length === 0) {
+              table.innerHTML = '<tr><td>데이터 없음</td></tr>';
+              return;
+            }
 
-          // 테이블 데이터
-          data.forEach(row => {
-            const tr = document.createElement('tr');
-            Object.values(row).forEach(value => {
-              const td = document.createElement('td');
-              td.textContent = value;
-              tr.appendChild(td);
+            // 테이블 헤더
+            const headerRow = document.createElement('tr');
+            Object.keys(data[0]).forEach(key => {
+              const th = document.createElement('th');
+              th.textContent = key;
+              headerRow.appendChild(th);
             });
-            table.appendChild(tr);
-          });
+            table.appendChild(headerRow);
+
+            // 테이블 데이터
+            data.forEach(row => {
+              const tr = document.createElement('tr');
+              Object.keys(row).forEach(key => {
+                const td = document.createElement('td');
+
+                // payment_yn 컬럼은 select 박스로 표시
+                if (key === 'payment_yn') {
+                  const select = document.createElement('select');
+                  select.className = 'payment-select';
+
+                  // DB 값 정규화 (공백 제거, 대문자 변환)
+                  const currentValue = (row[key] || 'N').toString().trim().toUpperCase();
+
+                  const optionY = document.createElement('option');
+                  optionY.value = 'Y';
+                  optionY.textContent = 'Y';
+                  
+
+                  const optionN = document.createElement('option');
+                  optionN.value = 'N';
+                  optionN.textContent = 'N';
+                  if (currentValue === 'Y') {
+                    optionY.selected = true;
+                  } else if (currentValue === 'N') {
+                    optionN.selected = true;
+                  } else {
+                    optionN.selected = true;
+                  }
+
+                  select.appendChild(optionY);
+                  select.appendChild(optionN);
+
+                  // change 이벤트 리스너
+                  select.addEventListener('change', function() {
+                    updatePaymentStatus(row.name, row.phone, row.join_year, this.value);
+                  });
+
+                  td.appendChild(select);
+                } else {
+                  td.textContent = row[key];
+                }
+
+                tr.appendChild(td);
+              });
+              table.appendChild(tr);
+            });
+          })
+          .catch(err => console.error('에러:', err));
+      }
+
+      // payment_yn 업데이트 함수
+      function updatePaymentStatus(name, phone, join_year, payment_yn) {
+        fetch('/php/updatePayment.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            name: name,
+            phone: phone,
+            join_year: join_year,
+            payment_yn: payment_yn
+          })
         })
-        .catch(err => console.error('에러:', err));
+        .then(res => res.json())
+        .then(result => {
+          if (result.success) {
+            alert('결제 상태가 업데이트되었습니다.');
+          } else {
+            alert('업데이트 실패: ' + (result.message || '알 수 없는 오류'));
+          }
+        })
+        .catch(err => {
+          console.error('업데이트 에러:', err);
+          alert('업데이트 처리 중 오류가 발생했습니다.');
+        });
+      }
+
+      // 엔터키 로그인 지원
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('adminPw').addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            login();
+          }
+        });
+      });
     </script>
 </body>
 </html>
