@@ -144,14 +144,14 @@
         const joinBtn = document.getElementById('joinBtn');
         if (joinBtn) {
             joinBtn.addEventListener('click', function(e){
-                // 오픈 시간 설정 (2025년 11월 15일 pm 6시)
+                // 오픈 시간 설정 (2025년 11월 15일 18시)
                 const openTime = new Date('2025-11-15T18:00:00').getTime();
                 const now = new Date().getTime();
                 const distance = openTime - now;
                 
                 if (distance < 0) {
                     // 오픈 시간이 지남
-                    domo.showAlert('comming soon.<br>문의사항은 DM 부탁드립니다.')
+                     window.location.href = '/aboutJoin.html';
                 } else {
                       // ✨ 수정: 오픈 전 - domo.showAlert를 사용하여 카운트다운 표시
                     showCountdownWithDomoAlert(openTime);
@@ -224,6 +224,7 @@
         }
     });
 
+// ✨ 새로 추가: domo.showAlert를 사용한 카운트다운 함수
 let countdownInterval = null;
 
 function showCountdownWithDomoAlert(openTime) {
@@ -237,7 +238,7 @@ function showCountdownWithDomoAlert(openTime) {
         const now = new Date().getTime();
         const distance = openTime - now;
         
-                if (distance < 0) {
+        if (distance < 0) {
             // ✨ 수정: 시간이 지나면 인터벌 정리하고 모달창 닫기
             clearInterval(countdownInterval);
             countdownInterval = null;
@@ -270,6 +271,25 @@ function showCountdownWithDomoAlert(openTime) {
     // 즉시 실행 및 1초마다 업데이트
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 1000);
+    
+    // ✨ 추가: 모달이 사용자에 의해 닫히면 인터벌도 정리
+    const alertModal = document.getElementById('customAlert');
+    if (alertModal) {
+        // 기존 이벤트 리스너 제거를 위한 함수
+        const handleModalClose = function(e) {
+            // 모달이 닫힐 때 인터벌 정리
+            if (!alertModal.classList.contains('show')) {
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                }
+                alertModal.removeEventListener('click', handleModalClose);
+            }
+        };
+        
+        // 모달 클릭 이벤트 감지
+        alertModal.addEventListener('click', handleModalClose);
+    }
 }
     function closeCountdownModal(event) {
         const modal = document.getElementById('countdownModal');
