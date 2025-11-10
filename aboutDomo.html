@@ -66,6 +66,22 @@
             <img class="modal-image" id="modalImage" src="" alt="확대 이미지">
         </div>
     </div>
+
+    <!-- ⏰ 카운트다운 모달 (기존) -->
+    <div class="modal-overlay" id="countdownModal" onclick="closeCountdownModal(event)">
+        <div class="modal-content" style="background: white; padding: 30px; border-radius: 10px; max-width: 400px;">
+            <div id="countdownModalText" style="text-align: center; font-size: 16px; line-height: 1.8;"></div>
+            <button onclick="closeCountdownModal(event)" style="margin-top: 20px; width: 100%; padding: 10px; cursor: pointer; background: #333; color: white; border: none; border-radius: 5px;">확인</button>
+        </div>
+    </div>
+    
+    <!-- ✨ 새로 추가: "Coming Soon" 알림 모달 (카운트다운 모달과 동일한 디자인) -->
+    <div class="modal-overlay" id="alertModal" onclick="closeAlertModal(event)">
+        <div class="modal-content" style="background: white; padding: 30px; border-radius: 10px; max-width: 400px;">
+            <div id="alertModalText" style="text-align: center; font-size: 16px; line-height: 1.8;"></div>
+            <button onclick="closeAlertModal(event)" style="margin-top: 20px; width: 100%; padding: 10px; cursor: pointer; background: #333; color: white; border: none; border-radius: 5px;">확인</button>
+        </div>
+    </div>
     
 
     <!-- 사이드바 오버레이 -->
@@ -124,11 +140,22 @@
             }
         });
 
-        // joinBtn 클릭 이벤트
+
         const joinBtn = document.getElementById('joinBtn');
         if (joinBtn) {
             joinBtn.addEventListener('click', function(e){
-                domo.showAlert('comming soon.<br>문의사항은 DM 부탁드립니다.')
+                // 오픈 시간 설정 (2025년 11월 15일 pm 6시)
+                const openTime = new Date('2025-11-15T18:00:00').getTime();
+                const now = new Date().getTime();
+                const distance = openTime - now;
+                
+                if (distance < 0) {
+                    // 오픈 시간이 지남
+                    domo.showAlert('comming soon.<br>문의사항은 DM 부탁드립니다.')
+                } else {
+                      // ✨ 수정: 오픈 전 - domo.showAlert를 사용하여 카운트다운 표시
+                    showCountdownWithDomoAlert(openTime);
+                }
             });
         }
     }
@@ -196,6 +223,75 @@
             }
         }
     });
+
+let countdownInterval = null;
+
+function showCountdownWithDomoAlert(openTime) {
+    // 기존 인터벌이 있다면 정리
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+    
+    // 카운트다운 업데이트 함수
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = openTime - now;
+        
+                if (distance < 0) {
+            // ✨ 수정: 시간이 지나면 인터벌 정리하고 모달창 닫기
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+            
+            // 기존 알림 모달 닫기
+            const alertModal = document.getElementById('customAlert');
+            if (alertModal) {
+                alertModal.classList.remove('show');
+            }
+            
+            document.body.style.overflow = '';
+            
+            // ✨ 수정: "coming soon" 대신 페이지 이동
+            setTimeout(() => {
+                window.location.href = '/aboutJoin.html';
+            }, 300);
+            
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // domo.showAlert를 사용하여 카운트다운 표시
+        domo.showAlert(`아직 신청 기간이 아닙니다.<br>${days}일 ${hours}시간 ${minutes}분 ${seconds}초 후에 신청 가능합니다.`);
+    }
+    
+    // 즉시 실행 및 1초마다 업데이트
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+}
+    function closeCountdownModal(event) {
+        const modal = document.getElementById('countdownModal');
+        const modalContent = modal.querySelector('.modal-content');
+        
+        // 모달 컨텐츠 내부 클릭 시 닫히지 않도록
+        if (event && modalContent.contains(event.target) && event.target.tagName !== 'BUTTON') {
+            return;
+        }
+        
+        // 인터벌 정리
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+        }
+        
+        // 모달 닫기
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    
 </script>
 </body>
 </html>
