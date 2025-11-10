@@ -244,7 +244,9 @@
             validateAndSubmit();
         });
 
-        function validateAndSubmit() {
+
+
+        async function validateAndSubmit() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const role = document.querySelector('input[name="role"]:checked');
@@ -268,6 +270,12 @@
                 return;
             }
 
+            // 4. 실시간 DB 인원수 유효성 검증
+            const isValid = await checkValidIns();
+            if (!isValid) {
+                return; // 인원 초과 시 중단
+            }
+
             const formData = {
                 name, phone, role: role.value, join_year: 2025, payment_yn : 'N'
             }
@@ -285,6 +293,16 @@
                 if (data.success) {
                     domo.showAlert('신청이 완료되었습니다!');
                     // 폼 초기화
+                    
+                    const alertModal = document.getElementById('customAlert');
+                    // 모달 클릭 시 
+                    const movePage = function() {
+                        window.location.href = "lastPage.html";
+                    };
+
+                    alertModal.addEventListener('click', movePage);
+
+
                     document.getElementById('name').value = '';
                     document.getElementById('phone').value = '';
                     document.querySelectorAll('input[name="role"]').forEach(radio => radio.checked = false);
@@ -296,6 +314,26 @@
                 console.error('Error:', error);
                 domo.showAlert('서버 연결에 실패했습니다.<br>잠시 후 다시 시도해주세요.');
             });
+        }
+
+        async function checkValidIns() {
+            try {
+                const res = await fetch('/php/getCountQuery.php');
+                const data = await res.json();
+
+                console.log('현재 신청 인원:', data.count);
+
+                if (data.count >= 16) {
+                    domo.showAlert('도모를 찾아주셔서 감사합니다.<br>아쉽게도 정원이 초과되어 올해 신청이 마감되었습니다.');
+                    return false;
+                } else {
+                    return true;
+                }
+            } catch (err) {
+                console.error('인원 확인 중 에러 발생:', err);
+                domo.showAlert('인원 확인 중 오류가 발생했습니다.<br>잠시 후 다시 시도해주세요.');
+                return false;
+            }
         }
     </script>
 </body>
