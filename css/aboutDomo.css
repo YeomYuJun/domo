@@ -7,6 +7,17 @@ body {
      background-attachment: fixed; /* 배경 고정 */
 }
 
+.main-container {
+    position: relative;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    min-height: calc(100vh - 60px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /*background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);*/
+    padding-top: 0; /*aboutDomo 와 통일 하기 위해 위 padding 제거 */
+}
+
 .aboutDomoTxt{
     font-size: 26px;
     margin-left: 38px;
