@@ -245,7 +245,6 @@
         });
 
 
-
         async function validateAndSubmit() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
@@ -270,15 +269,29 @@
                 return;
             }
 
-            // 4. 실시간 DB 인원수 유효성 검증
+            // 4. 최종 확인
+            const confirmHTML = `   <h3>도모 참가신청 정보입니다.</h3><br>
+                                    <p><strong>성함</strong>: ${name}</p>
+                                    <p><strong>번호</strong>: ${phone}</p>
+                                    <p><strong>역할</strong>: ${role.value === 'drink' ? '음료' : '선물'}</p>
+                                    `;
+            const isConfirmed = await domo.showConfirm(confirmHTML);
+            if (!isConfirmed) {
+                return; // 취소 시 중단
+            }
+
+            // 5. 실시간 DB 인원수 유효성 검증
             const isValid = await checkValidIns();
             if (!isValid) {
                 return; // 인원 초과 시 중단
             }
 
+            
+
             const formData = {
                 name, phone, role: role.value, join_year: 2025, payment_yn : 'N'
             }
+            
 
             // 서버에 데이터 전송
             fetch('/php/addJoinQuery.php', {

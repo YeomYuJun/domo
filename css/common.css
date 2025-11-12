@@ -486,3 +486,123 @@ p {
         font-size: 12px;
     }
 }
+
+/* 커스텀 확인 모달 */
+.custom-confirm {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-confirm.show {
+    display: flex;
+}
+
+.custom-confirm-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.custom-confirm-box {
+    position: relative;
+    z-index: 10001;
+    width: 270px;
+    background-color: #BCBCBC;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    gap: 12px;
+}
+
+.custom-confirm-box .confirm-message-ttl {
+    color: #161616;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-confirm-box .confirm-message {
+    color: #161616;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 0.8;
+    white-space: pre-line;
+    margin-bottom: 8px;
+}
+
+.custom-confirm-box .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+    min-width: 80px;
+}
+
+.custom-confirm-box #confirmBtn {
+    background-color: #161616;
+    color: #BCBCBC;
+}
+
+.custom-confirm-box #confirmBtn:hover {
+    background-color: #2a2a2a;
+}
+
+.custom-confirm-box #cancelBtn {
+    background-color: #6a6a6a;
+    color: #ffffff;
+}
+
+.custom-confirm-box #cancelBtn:hover {
+    background-color: #7a7a7a;
+}
+
+.custom-confirm-box div {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* 모바일 확인 조정 */
+@media (max-width: 768px) {
+    .custom-confirm-box {
+        width: 80vw;
+        max-width: 270px;
+        height: auto;
+        min-height: 120px;
+    }
+
+    .custom-confirm-box .confirm-message {
+        font-size: 12px;
+    }
+
+    .custom-confirm-box .btn {
+        font-size: 12px;
+        padding: 8px 16px;
+        min-width: 70px;
+    }
+}

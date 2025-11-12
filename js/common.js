@@ -511,10 +511,88 @@ function showCustomAlert(message) {
     alertModal.addEventListener('click', closeModal);
 }
 
+// 커스텀 알림 시스템
+function initializeCustomConfirm() {
+    // 알림 HTML이 이미 존재하면 생성하지 않음
+    if (document.getElementById('customConfirm')) {
+        return;
+    }
+
+    const confirmHTML = `
+        <div id="customConfirm" class="custom-confirm">
+            <div class="custom-confirm-backdrop"></div>
+            <div class="custom-confirm-box">
+                <p class="confirm-message-ttl pretendard">domo.</p>
+                <span id="confirmMessage" class="confirm-message pretendard"></span>
+                <div>
+                    <button id="confirmBtn" type="button" class="btn">확인</button>
+                    <button id="cancelBtn" type="button" class="btn">취소</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', confirmHTML);
+}
+
+// 커스텀 확인 표시 함수 (Promise 기반)
+function showCustomConfirm(message) {
+    return new Promise((resolve) => {
+        const confirmModal = document.getElementById('customConfirm');
+        const confirmMessage = document.getElementById('confirmMessage');
+
+        if (!confirmModal || !confirmMessage) {
+            console.error('커스텀 확인 요소가 없습니다. initializeDomo()가 실행되었는지 확인하세요.');
+            resolve(false);
+            return;
+        }
+
+        confirmMessage.innerHTML = message;
+        confirmModal.classList.add('show');
+
+        const cancelBtn = document.getElementById('cancelBtn');
+        const confirmBtn = document.getElementById('confirmBtn');
+
+        // 취소 버튼 클릭 핸들러
+        const handleCancel = function(e) {
+            e.stopPropagation();
+            confirmModal.classList.remove('show');
+            cancelBtn.removeEventListener('click', handleCancel);
+            confirmBtn.removeEventListener('click', handleConfirm);
+            backdrop.removeEventListener('click', handleBackdropClick);
+            resolve(false);
+        };
+
+        // 확인 버튼 클릭 핸들러
+        const handleConfirm = function(e) {
+            e.stopPropagation();
+            confirmModal.classList.remove('show');
+            cancelBtn.removeEventListener('click', handleCancel);
+            confirmBtn.removeEventListener('click', handleConfirm);
+            backdrop.removeEventListener('click', handleBackdropClick);
+            resolve(true);
+        };
+
+        // 백드롭 클릭 핸들러 (취소와 동일)
+        const backdrop = confirmModal.querySelector('.custom-confirm-backdrop');
+        const handleBackdropClick = function() {
+            confirmModal.classList.remove('show');
+            cancelBtn.removeEventListener('click', handleCancel);
+            confirmBtn.removeEventListener('click', handleConfirm);
+            backdrop.removeEventListener('click', handleBackdropClick);
+            resolve(false);
+        };
+
+        cancelBtn.addEventListener('click', handleCancel);
+        confirmBtn.addEventListener('click', handleConfirm);
+        backdrop.addEventListener('click', handleBackdropClick);
+    });
+}
 // 도모 초기화
 function initializeDomo() {
     initializeCommonEvents();
     initializeCustomAlert();
+    initializeCustomConfirm();
 
     const sidebar = document.getElementById('sidebar');
     if (sidebar) {
@@ -549,5 +627,6 @@ window.domo = {
     fadeOut,
     toggleSidebar,
     closeSidebar,
-    showAlert: showCustomAlert
+    showAlert: showCustomAlert,
+    showConfirm: showCustomConfirm,
 };
