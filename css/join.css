@@ -22,7 +22,7 @@ body {
 
 .aboutDomoTxt {
     font-size: 26px;
-    margin-left: 38px;
+    padding-left: 1rem;
     margin-top: 50px;
 }
 
@@ -119,4 +119,5 @@ body {
     font-size: 20px;
     padding: 15px 0;
     font-weight: 600;
+    border-radius: 8px;
 }
